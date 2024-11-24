@@ -1,44 +1,14 @@
 const sponsorsData = {
-  t1: [
+  "Platinum sponsor": [
     {
-      name: "Google",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
+      name: "Flutterflow",
+      logo: "/logo/FlutterFlow.svg",
     },
   ],
-  t2: [
+  "Silver sponsor": [
     {
-      name: "Google",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
-    },
-  ],
-  t3: [
-    {
-      name: "Google",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
-    },
-    {
-      name: "Microsoft",
-      logo: "/sponsorPlaceholder.png",
+      name: "AV Devs",
+      logo: "/logo/AVDevs.svg",
     },
   ],
 };

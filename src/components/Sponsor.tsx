@@ -15,7 +15,7 @@ export default function Sponsors() {
                 {Object.entries(sponsorsData).map(([tier, sponsors]) => (
                     <div key={tier} className="space-y-4">
                         <h2 className="font-operetta-12 text-2xl lg:text-3xl font-semibold capitalize">
-                            {tier.replace('t', 'Tier ')}
+                            {tier}
                         </h2>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 place-items-center">
                             {sponsors.map((sponsor, index) => (
@@ -35,7 +35,7 @@ export default function Sponsors() {
                                                 src={sponsor.logo}
                                                 alt={sponsor.name}
                                                 fill
-                                                className="object-contain p-0"
+                                                className="object-contain bg-white p-4"
                                                 sizes="(max-width: 640px) 150px,
                                                        (max-width: 768px) 180px,
                                                        (max-width: 1024px) 220px,
