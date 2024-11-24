@@ -2,7 +2,7 @@ import PartnerFrame from "@/components/PartnerFrame";
 
 export default function Partner() {
     return (
-        <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 mb-24 gap-6 md:gap-10">
+        <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 mb-0 gap-6 md:gap-10">
             <h1 className="font-operetta-12 text-3xl lg:text-4xl font-bold">
                 Community Partners
             </h1>

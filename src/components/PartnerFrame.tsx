@@ -16,7 +16,7 @@ export default function PartnerFrame({ name, logo }: { name: string, logo: strin
                         src={logo}
                         alt={name}
                         fill
-                        className="object-contain bg-white p-3"
+                        className="object-contain bg-white p-2 md:p-3"
                         sizes="(max-width: 768px) 130px,
                                (max-width: 1024px) 160px,
                                180px"

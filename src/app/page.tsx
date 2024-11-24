@@ -10,7 +10,7 @@ import Partners from "@/components/Partner";
 
 export default function Home() {
   return (
-    <div className="relative font-operetta-12 bg-transparent text-[#232b34]">
+    <div className=" font-operetta-12 bg-transparent text-[#232b34]">
       <Background />
       <Navbar />
       <Hero />

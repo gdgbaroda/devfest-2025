@@ -8,12 +8,12 @@ export default function Gallery({ title, description }: { title: string, descrip
                 {description}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-                <GalleryFrame img={"/placeholder.svg"} />
-                <GalleryFrame img={"/placeholder.svg"} />
-                <GalleryFrame img={"/placeholder.svg"} />
-                <GalleryFrame img={"/placeholder.svg"} />
-                <GalleryFrame img={"/placeholder.svg"} />
-                <GalleryFrame img={"/placeholder.svg"} />
+                <GalleryFrame img={"/gallery/1.jpg"} />
+                <GalleryFrame img={"/gallery/2.jpg"} />
+                <GalleryFrame img={"/gallery/6.jpg"} />
+                <GalleryFrame img={"/gallery/5.jpg"} />
+                <GalleryFrame img={"/gallery/4.jpg"} />
+                <GalleryFrame img={"/gallery/3.jpg"} />
             </div>
         </div>
     );
