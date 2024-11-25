@@ -20,6 +20,9 @@ export default function Footer() {
                     <a href="https://www.instagram.com/gdgbaroda" target="_blank" rel="noopener noreferrer">
                         <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} className="hover:opacity-80 transition-opacity contrast-75" />
                     </a>
+                    <a href="https://www.facebook.com/GDGBaroda" target="_blank" rel="noopener noreferrer">
+                        <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} className="hover:opacity-80 transition-opacity contrast-75" />
+                    </a>
                     <a href="https://www.youtube.com/channel/UCdAjNjPWNIXNaxu4mGJc3uw" target="_blank" rel="noopener noreferrer">
                         <Image src="/icons/youtube.svg" alt="YouTube" width={28} height={28} className="hover:opacity-80 transition-opacity contrast-75" />
                     </a>

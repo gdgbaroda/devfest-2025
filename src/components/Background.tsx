@@ -6,7 +6,7 @@ export default function Background() {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-        <div className="fixed inset-0 -z-10 w-full overflow-hidden">
+        <div className="fixed inset-0 -z-10 w-full overflow-hidden select-none">
             {/* Placeholder color while image loads */}
             <div className="absolute inset-0 bg-gradient-to-tr from-[#ffe2cd] to-[#fffcc2] transition-opacity duration-500  ease-linear"
                 style={{ opacity: isLoaded ? 0 : 1 }}
