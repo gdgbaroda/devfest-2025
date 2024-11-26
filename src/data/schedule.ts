@@ -11,45 +11,142 @@ interface ScheduleSection {
 
 const scheduleData: ScheduleSection[] = [
   {
-    title: "Morning Sessions",
+    title: "Keynote",
     items: [
-      {
-        title: "Registration & Breakfast",
-        time: "8:00 - 9:00 AM",
-      },
       {
         title: "Opening Keynote",
-        speaker: "John Smith",
-        time: "9:00 - 10:00 AM",
+        time: "9:30 - 9:45 AM",
       },
     ],
   },
   {
-    title: "Track 1 - Web Development",
+    title: "Slot 1",
     items: [
       {
-        title: "Modern Frontend Frameworks",
-        speaker: "Jane Doe",
-        time: "10:15 - 11:00 AM",
-      },
-      {
-        title: "Backend Architecture",
-        speaker: "Mike Johnson",
-        time: "11:15 - 12:00 PM",
+        title: "Decoding the Giants- Unveiling the mysteries of LLMs",
+        speaker: "Aashi Dutt",
+        time: "9:45 - 10:30 AM",
       },
     ],
   },
   {
-    title: "Afternoon Sessions",
+    title: "Slot 2",
+    items: [
+      {
+        title:
+          "Introduction to no-code gaming platforms and develop games for VR",
+        speaker: "Harsh Mehta",
+        time: "10:45 - 11:00 AM",
+      },
+    ],
+  },
+  {
+    title: "Slot 3",
+    items: [
+      {
+        title:
+          "Hoe to Ideate, Build and Launch your AI Prowered Chrome Extension Under 30 Minutes",
+        speaker: "Ashish Kamathi",
+        time: "11:00 - 11:30 AM",
+      },
+    ],
+  },
+  {
+    title: "Slot 4",
+    items: [
+      {
+        title: "Statistical AI and Gen AI",
+        speaker: "Jay Rajvadiya",
+        time: "11:30 - 11:45 AM",
+      },
+    ],
+  },
+  {
+    title: "Slot 5",
+    items: [
+      {
+        title: "Navigating the AI Landscape with Prompt Engineering",
+        speaker: "Vinu Abinayaa",
+        time: "11:45 - 12:30 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 6",
     items: [
       {
         title: "Lunch Break",
-        time: "12:00 - 1:00 PM",
+        speaker: "",
+        time: "12:30 - 2:00 PM",
       },
+    ],
+  },
+  {
+    title: "Slot 7",
+    items: [
       {
-        title: "Cloud Computing Workshop",
-        speaker: "Sarah Wilson",
-        time: "1:00 - 2:30 PM",
+        title: "Game",
+        speaker: "",
+        time: "2:00 - 2:15 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 8",
+    items: [
+      {
+        title: "Retrieval Augmented Generation(RAG) explained with Gemma",
+        speaker: "Ashok Vishwakarma",
+        time: "2:15 - 2:50 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 9",
+    items: [
+      {
+        title: "Gemini for Developers",
+        speaker: "Priya Sindkar",
+        time: "2:50 - 3:05 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 10",
+    items: [
+      {
+        title: "Genkit: The AI Alchemist Turning Your Apps into Gold",
+        speaker: "Pawan Kumar",
+        time: "3:05 - 3:45 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 11",
+    items: [
+      {
+        title: "Sponsor slot 1",
+        speaker: "Manoranjan Padhey",
+        time: "3:45 - 4:00 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 12",
+    items: [
+      {
+        title: "Unlock the Power of Flutter Dev tools",
+        speaker: "Vaidehi Shah",
+        time: "4:00 - 4:35 PM",
+      },
+    ],
+  },
+  {
+    title: "Slot 13",
+    items: [
+      {
+        title: "Closing note",
+        time: "4:35 - 5:00 PM",
       },
     ],
   },
