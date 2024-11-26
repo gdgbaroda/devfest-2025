@@ -54,7 +54,7 @@ export default function AboutSection() {
                 </div>
 
                 <div className="text-center mt-6 md:mt-8 max-w-4xl mx-auto">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">DevFest Baroda</h1>
+                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-zinc-900">GDG Baroda: DevFest 2024</h1>
                     <div className="font-open-sans text-sm md:text-base lg:text-lg">
                         <p className="mb-3 md:mb-4">
                             DevFest Baroda is a technology conference celebrating innovation, creativity, and collaboration in the world of software development. Brought to you by <a className="underline" target="_blank" href="https://gdg.community.dev/gdg-baroda">Google Developers Group Baroda</a> , this annual event brings together developers, tech enthusiasts, and industry experts from across the region to explore cutting-edge technologies, share knowledge, and inspire the next generation of tech innovators.
