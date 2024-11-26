@@ -7,7 +7,7 @@ export default function Partner() {
                 Community Partners
             </h1>
             <p className="font-open-sans text-base md:text-lg lg:text-xl text-gray-700 max-w-4xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, dignissimos accusantium aliquam voluptate vitae nulla mollitia voluptatum dolore quaerat!
+                Our community partners play a vital role in supporting and enhancing our event. We are thankful for their collaboration and commitment.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center">
                 <PartnerFrame name={"Appmattic"} logo={"/logo/Appmattic.svg"} />

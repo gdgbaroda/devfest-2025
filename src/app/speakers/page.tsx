@@ -7,7 +7,7 @@ export default function Schedule() {
     return <div className="font-operetta-12 text-[#232b34]">
         <Background />
         <Navbar />
-        <div className="my-32">
+        <div className="mt-32">
             <Speakers />
         </div>
         <Footer />

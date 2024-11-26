@@ -8,7 +8,7 @@ export default function Sponsors() {
                 Sponsors
             </h1>
             <p className="font-open-sans text-base md:text-lg lg:text-xl text-gray-700 max-w-4xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, dignissimos accusantium aliquam voluptate vitae nulla mollitia voluptatum dolore quaerat!
+                We are grateful to our sponsors for their generous support, helping us bring this event to life.
             </p>
 
             <div className="space-y-12 md:space-y-16">

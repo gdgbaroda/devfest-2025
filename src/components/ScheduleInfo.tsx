@@ -4,7 +4,7 @@ import { Separator } from "./ui/separator";
 
 export default function ScheduleInfo() {
     return (
-        <div className="flex flex-col w-full px-4 md:px-8 lg:px-16 xl:px-32 py-32">
+        <div className="flex flex-col w-full px-4 md:px-8 lg:px-16 xl:px-32 pt-32">
             <div className="max-w-4xl mx-auto w-full">
                 {/* Header */}
                 <div className="text-center mb-12 md:mb-16">
