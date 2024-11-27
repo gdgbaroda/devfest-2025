@@ -9,7 +9,7 @@ export default function Hero() {
                     src="/title.svg"
                     alt="DevFest Logo"
                     fill
-                    priority
+                    priority={true}
                     className="object-contain select-none pointer-events-none"
                     sizes="(max-width: 768px) 300px, (max-width: 1024px) 450px, (max-width: 1280px) 600px, 700px"
                 />

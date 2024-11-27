@@ -17,7 +17,9 @@ export default function Background() {
                 src="/Background.png"
                 alt="Background"
                 fill
-                priority
+                priority={true}
+                quality={50}
+                loading="eager"
                 onLoad={() => setIsLoaded(true)}
                 className={`transition-opacity duration-500 object-cover blur-md contrast-125 saturate-150
                            ${isLoaded ? 'opacity-100' : 'opacity-0'}`}

@@ -16,12 +16,13 @@ export default function SpeakerFrame({ img, name, role, company }: SpeakerFrameP
                     src={img}
                     alt={`${name}'s profile`}
                     fill
+                    loading="lazy"
+                    quality={70}
                     sizes="(max-width: 768px) 192px, (max-width: 1024px) 224px, 256px"
                     className="object-contain object-center"
                     style={{
                         objectPosition: 'center'
                     }}
-                    priority
                 />
             </div>
 

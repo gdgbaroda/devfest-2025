@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className={`fixed font-open-sans z-10 top-0 select-none flex h-20 pt-2 md:pt-4 w-full px-4 md:px-14 lg:px-32 bg-transparent justify-between items-center ${hasScrolled ? 'backdrop-blur-3xl' : ''}`}>
             {/* Logo */}
             <div className="cursor-pointer text-center select-none" onClick={() => handleNavigation("/")}>
-                <Image src="/logo.svg" alt="DevFest Logo" priority width={200} height={200} className="h-34 w-34 lg:h-56 lg:w-56" />
+                <Image src="/logo.svg" alt="DevFest Logo" priority={true} width={200} height={200} className="h-34 w-34 lg:h-56 lg:w-56" />
             </div>
 
             {/* Mobile Menu */}

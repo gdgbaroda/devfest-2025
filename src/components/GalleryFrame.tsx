@@ -17,6 +17,8 @@ export default function GalleryFrame({ img }: { img: string }) {
                     src={img}
                     alt="Gallery Image"
                     fill
+                    loading="lazy"
+                    quality={70}
                     className="object-cover"
                     sizes="(max-width: 768px) 300px, 
                     (max-width: 1024px) 360px, 
