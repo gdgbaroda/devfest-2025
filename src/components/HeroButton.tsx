@@ -6,9 +6,9 @@ export default function HeroButton({ title, link }: { title: string, link: strin
 
     const handleClick = () => {
         if (link.match(/^https?:\/\//)) {
-            window.open(link, '_blank'); // Open external links in new tab
+            window.open(link, '_blank'); 
         } else {
-            router.push(link); // Internal navigation
+            router.push(link); 
         }
     };
 

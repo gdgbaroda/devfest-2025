@@ -1,4 +1,4 @@
-export default function Discription() {
+export default function Description() {
     return (
         <div className="flex flex-col w-full justify-top items-center gap-8 md:gap-16 px-4 md:px-8 lg:px-16 md:py-16">
             {/* Tagline */}
@@ -24,7 +24,7 @@ export default function Discription() {
 
             {/* Description */}
             <div className="max-w-4xl text-center px-4 md:px-8 lg:px-16 text-lg md:text-xl font-open-sans text-gray-700">
-                Join DevFest Baroda 2024, Gujarat's premier tech conference! Dive into cutting-edge talks and workshops led by Google Developer Experts. Experience the latest in Android, Flutter, Cloud, AI/ML, and Web Technologies while networking with Baroda's tech community.
+                Join DevFest Baroda 2024, Gujarat&apos;s premier tech conference! Dive into cutting-edge talks and workshops led by Google Developer Experts. Experience the latest in Android, Flutter, Cloud, AI/ML, and Web Technologies while networking with Baroda&apos;s tech community.
             </div>
         </div>
     );

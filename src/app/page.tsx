@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import Discription from "@/components/Discription";
+import Description from "@/components/Description";
 import Gallery from "@/components/Gallery";
 import Speakers from "@/components/Speaker";
 import Sponsors from "@/components/Sponsor";
@@ -14,7 +14,7 @@ export default function Home() {
       <Background />
       <Navbar />
       <Hero />
-      <Discription />
+      <Description />
       <Gallery title="Past devfests" description="" />
       <Speakers />
       <Sponsors />

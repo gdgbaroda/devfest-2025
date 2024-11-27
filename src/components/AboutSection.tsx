@@ -57,10 +57,10 @@ export default function AboutSection() {
                     <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-zinc-900">GDG Baroda: DevFest 2024</h1>
                     <div className="font-open-sans text-sm md:text-base lg:text-lg">
                         <p className="mb-3 md:mb-4">
-                            DevFest Baroda is a technology conference celebrating innovation, creativity, and collaboration in the world of software development. Brought to you by <a className="underline" target="_blank" href="https://gdg.community.dev/gdg-baroda">Google Developers Group Baroda</a> , this annual event brings together developers, tech enthusiasts, and industry experts from across the region to explore cutting-edge technologies, share knowledge, and inspire the next generation of tech innovators.
+                            DevFest Baroda is a technology conference celebrating innovation, creativity, and collaboration in the world of software development. Brought to you by <a className="underline" target="_blank" href="https://gdg.community.dev/gdg-baroda">Google Developers Group Baroda</a>, this annual event brings together developers, tech enthusiasts, and industry experts from across the region to explore cutting-edge technologies, share knowledge, and inspire the next generation of tech innovators.
                         </p>
                         <p className="mb-3 md:mb-4">
-                            Our mission is to create a vibrant platform where passionate technologists can learn, network, and push the boundaries of what's possible in software development, cloud computing, mobile technologies, and emerging tech trends. With engaging workshops, insightful talks, and hands-on sessions, DevFest Baroda is more than just a conference—it's a celebration of technology and community.
+                            Our mission is to create a vibrant platform where passionate technologists can learn, network, and push the boundaries of what&apos;s possible in software development, cloud computing, mobile technologies, and emerging tech trends. With engaging workshops, insightful talks, and hands-on sessions, DevFest Baroda is more than just a conference—it&apos;s a celebration of technology and community.
                         </p>
                         <ul className="list-disc list-inside space-y-1 md:space-y-2">
                             <div>Discover the latest technological innovations</div>

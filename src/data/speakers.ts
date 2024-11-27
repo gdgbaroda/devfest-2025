@@ -50,7 +50,7 @@ const speakersData: Speaker[] = [
   },
   {
     name: "Harsh Mehta",
-    role: "Virtul Reality Developer",
+    role: "Virtual Reality Developer",
     company: "",
     img: "/speakers/HarshMehta.png",
   },

@@ -45,7 +45,7 @@ const scheduleData: ScheduleSection[] = [
     items: [
       {
         title:
-          "Hoe to Ideate, Build and Launch your AI Prowered Chrome Extension Under 30 Minutes",
+          "How to Ideate, Build and Launch your AI Powered Chrome Extension Under 30 Minutes",
         speaker: "Ashish Kamathi",
         time: "11:00 - 11:30 AM",
       },
