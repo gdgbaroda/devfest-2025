@@ -1,32 +1,80 @@
 import Image from "next/image";
 
-const teamMembers = [
+const organizers = [
+    {
+        name: "Akhil Tushar",
+        image: "/team/organizers/akhil_tushar.jpg"
+    },
     {
         name: "Dron Trivedi",
-        image: "/team/dron_trivedi.png"
+        image: "/team/organizers/dron_trivedi.png"
     },
     {
         name: "Hardik Mistry",
-        image: "/team/hardikmistry.jpeg"
+        image: "/team/organizers/hardikmistry.jpeg"
     },
     {
         name: "Hardip Patel",
-        image: "/team/hardip_patel.png"
+        image: "/team/organizers/hardip_patel.png"
     },
     {
         name: "Kushal Dave",
-        image: "/team/kushal_dave.png"
+        image: "/team/organizers/kushal_dave.png"
     },
     {
         name: "Prachi Durge",
-        image: "/team/prachi.png"
+        image: "/team/organizers/prachi.png"
     },
     {
         name: "Rahul Banker",
-        image: "/team/rahul_banker.png"
+        image: "/team/organizers/rahul_banker.png"
     },
 
 ];
+
+const volunteers = [
+    {
+        name: "Ashutosh Bhagat",
+        image: "/team/volunteers/Ashutosh_Bhagat.png"
+    },
+    {
+        name: "Ayush Makwana",
+        image: "/team/volunteers/Ayush_Makwana.png"
+    },
+    {
+        name: "Chirag Savsani",
+        image: "/team/volunteers/Chirag_Savsani.png"
+    },
+    {
+        name: "Devansh Rajan",
+        image: "/team/volunteers/Devansh_Rajan.png"
+    },
+    {
+        name: "Divya Chhabaria",
+        image: "/team/volunteers/Divya_Chhabaria.png"
+    },
+    {
+        name: "Naiteek Chokshi",
+        image: "/team/volunteers/Naiteek_Chokshi.png"
+    },
+    {
+        name: "Riddhika Cheruku",
+        image: "/team/volunteers/Riddhika_Cheruku.png"
+    },
+    {
+        name: "Rutunj Parikh",
+        image: "/team/volunteers/Rutunj_Parikh.png"
+    },
+    {
+        name: "Shivansh Darji",
+        image: "/team/volunteers/Shivansh_Darji.png"
+    },
+    {
+        name: "Yuvraj Ahuja",
+        image: "/team/volunteers/Yuvraj_Ahuja.png"
+    },
+];
+
 
 export default function AboutSection() {
     return (
@@ -39,16 +87,15 @@ export default function AboutSection() {
                     </div>
 
                     {/* Main frame */}
-                    <div className="relative border-2 border-[#232b34] bg-[#eed7ca]
-                                  transition-transform duration-100 
-                                  group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
+                    <div className="relative border-2 border-[#232b34] bg-[#eed7ca]">
                         <Image
                             src="/banner.png"
                             alt="About"
-                            width={1200}
-                            height={675}
+                            width={1920}
+                            height={1080}
                             className="w-full h-auto"
-                            priority
+                            priority={true}
+                            quality={100}
                         />
                     </div>
                 </div>
@@ -72,19 +119,63 @@ export default function AboutSection() {
                 </div>
 
             </div>
-            <div className="mt-12 md:mt-16">
-                <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-center">Organizers</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 justify-items-center">
-                    {teamMembers.map((member, index) => (
-                        <div key={index} className="group flex flex-col items-center">
+
+            {/* Volunteers */}
+            <div className="mt-12 md:mt-20">
+                <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-center">Volunteers</h2>
+                <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 justify-center max-w-[1250px] mx-auto px-4 md:px-0">
+                    {volunteers.map((member, index) => (
+                        <div key={index} className="group flex flex-col items-center w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)]">
                             <div className="relative">
                                 {/* Shadow/Background frame */}
-                                <div className="absolute w-[130px] md:w-[160px] lg:w-[180px] aspect-square 
+                                <div className="absolute w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square 
                                               border-2 border-[#232b34] bg-[#1b2631] translate-x-1 translate-y-1">
                                 </div>
 
                                 {/* Main frame */}
-                                <div className="relative w-[130px] md:w-[160px] lg:w-[180px] aspect-square
+                                <div className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square
+                                              border-2 border-[#232b34] bg-[#eed7ca]
+                                              transition-transform duration-100 
+                                              group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={member.image}
+                                            alt={member.name}
+                                            fill
+                                            className="object-cover"
+                                            quality={70}
+                                            sizes="(max-width: 768px) 130px,
+                                                   (max-width: 1024px) 160px,
+                                                   180px"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="mt-2 md:mt-4 text-center">
+                                <h3 className="font-operetta-12 text-base md:text-lg lg:text-xl font-bold whitespace-pre-line">
+                                    {member.name}
+                                </h3>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Organizers */}
+            <div className="mt-12 md:mt-24">
+                <h2 className="text-2xl md:text-4xl font-bold mb-6 md:mb-8 text-center">Organizers</h2>
+                <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-8 justify-center max-w-[1250px] mx-auto px-4 md:px-0">
+                    {organizers.map((member, index) => (
+                        <div key={index} className="group flex flex-col items-center w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)]">
+                            <div className="relative">
+                                {/* Shadow/Background frame */}
+                                <div className="absolute w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square 
+                                              border-2 border-[#232b34] bg-[#1b2631] translate-x-1 translate-y-1">
+                                </div>
+
+                                {/* Main frame */}
+                                <div className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square
                                               border-2 border-[#232b34] bg-[#eed7ca]
                                               transition-transform duration-100 
                                               group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
