@@ -11,6 +11,15 @@ interface ScheduleSection {
 
 const scheduleData: ScheduleSection[] = [
   {
+    title: "Break",
+    items: [
+      {
+        title: "Registration & Breakfast",
+        time: "8:00 - 9:30 AM",
+      },
+    ],
+  },
+  {
     title: "Keynote",
     items: [
       {
@@ -36,7 +45,7 @@ const scheduleData: ScheduleSection[] = [
         title:
           "Introduction to no-code gaming platforms and develop games for VR",
         speaker: "Harsh Mehta",
-        time: "10:45 - 11:00 AM",
+        time: "10:30 - 10:45 AM",
       },
     ],
   },
@@ -47,7 +56,7 @@ const scheduleData: ScheduleSection[] = [
         title:
           "How to Ideate, Build and Launch your AI Powered Chrome Extension Under 30 Minutes",
         speaker: "Ashish Kamathi",
-        time: "11:00 - 11:30 AM",
+        time: "10:45 - 11:20 AM",
       },
     ],
   },
@@ -57,7 +66,7 @@ const scheduleData: ScheduleSection[] = [
       {
         title: "Statistical AI and Gen AI",
         speaker: "Jay Rajvadiya",
-        time: "11:30 - 11:45 AM",
+        time: "11:20 - 11:35 AM",
       },
     ],
   },
@@ -65,19 +74,19 @@ const scheduleData: ScheduleSection[] = [
     title: "Slot 5",
     items: [
       {
-        title: "Navigating the AI Landscape with Prompt Engineering",
-        speaker: "Vinu Abinayaa",
-        time: "11:45 - 12:30 PM",
+        title: "Genkit: The AI Alchemist Turning Your Apps into Gold",
+        speaker: "Pawan Kumar",
+        time: "11:35 - 12:15 PM",
       },
     ],
   },
   {
-    title: "Slot 6",
+    title: "Break",
     items: [
       {
-        title: "Lunch Break",
+        title: "Lunch",
         speaker: "",
-        time: "12:30 - 2:00 PM",
+        time: "12:15 - 2:00 PM",
       },
     ],
   },
@@ -115,9 +124,9 @@ const scheduleData: ScheduleSection[] = [
     title: "Slot 10",
     items: [
       {
-        title: "Genkit: The AI Alchemist Turning Your Apps into Gold",
-        speaker: "Pawan Kumar",
-        time: "3:05 - 3:45 PM",
+        title: "Navigating the AI Landscape with Prompt Engineering",
+        speaker: "Vinu Abinayaa",
+        time: "3:05 - 3:35 PM",
       },
     ],
   },
@@ -125,8 +134,8 @@ const scheduleData: ScheduleSection[] = [
     title: "Slot 11",
     items: [
       {
-        title: "Sponsor slot 1",
-        speaker: "Manoranjan Padhey",
+        title: "Sponsor Slot",
+        speaker: "",
         time: "3:45 - 4:00 PM",
       },
     ],
@@ -147,6 +156,15 @@ const scheduleData: ScheduleSection[] = [
       {
         title: "Closing note",
         time: "4:35 - 5:00 PM",
+      },
+    ],
+  },
+  {
+    title: "Break",
+    items: [
+      {
+        title: "High Tea & Networking",
+        time: "5:00 - 6:00 PM",
       },
     ],
   },

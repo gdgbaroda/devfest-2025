@@ -38,8 +38,8 @@ export default function ScheduleInfo() {
                                 <div className="font-open-sans">
                                     {section.items.map((item, itemIndex) => (
                                         <div key={itemIndex}>
-                                            <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between px-6 
-                          min-h-[80px] py-3 gap-y-1">
+                                            <div className={`flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between px-6 
+                          min-h-[80px] py-3 gap-y-1 ${section.title === "Break" ? "bg-[#efe4d7]" : ""}`}>
                                                 <div className="mb-2 sm:mb-0 flex-1">
                                                     <h3 className="text-gray-900 font-medium line-clamp-2">
                                                         {item.title}
