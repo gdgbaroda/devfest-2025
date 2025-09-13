@@ -1,30 +1,33 @@
 import Image from "next/image";
 
-export default function GalleryFrame({ img }: { img: string }) {
-    return (
-        <div className="group relative p-4 flex justify-center">
-            {/* Shadow/Background frame */}
-            <div className="absolute w-[250px] md:w-[280px] lg:w-[300px] aspect-[4/3]
-                          border-2 border-[#232b34] bg-[#1b2631] translate-y-2 translate-x-2">
-            </div>
-
-            {/* Main frame */}
-            <div className="relative w-[250px] md:w-[280px] lg:w-[300px] aspect-[4/3]
-                          border-2 border-[#232b34] bg-[#eed7ca] 
-                          transition-transform duration-200 
-                          group-hover:-translate-x-0.5 group-hover:-translate-y-0.5">
-                <Image
-                    src={img}
-                    alt="Gallery Image"
-                    fill
-                    loading="lazy"
-                    quality={70}
-                    className="object-cover"
-                    sizes="(max-width: 768px) 300px, 
-                    (max-width: 1024px) 360px, 
-                    420px"
-                />
-            </div>
+export default function GalleryFrame({
+  img,
+  className = "",
+}: {
+  img: string;
+  className?: string;
+}) {
+  return (
+    <div className={`group relative ${className}`}>
+      {/* Main frame */}
+      <div className="relative h-full w-full bg-[#eed7ca] rounded-3xl overflow-hidden shadow-[0_8px_20px_-8px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out will-change-transform transform-gpu group-hover:-translate-y-1 group-hover:shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] group-hover:saturate-110">
+        {/* Image layer with subtle scale on hover */}
+        <div className="absolute inset-0">
+          <Image
+            src={img}
+            alt="Gallery Image"
+            fill
+            loading="lazy"
+            quality={75}
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] group-hover:rotate-[0.25deg]"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          />
         </div>
-    );
+
+        {/* Hover overlay gradient + subtle shine */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="pointer-events-none absolute -inset-1 bg-[radial-gradient(120px_60px_at_70%_0%,rgba(255,255,255,0.35),transparent)] opacity-0 group-hover:opacity-60 transition-opacity duration-500" />
+      </div>
+    </div>
+  );
 }

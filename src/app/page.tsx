@@ -5,13 +5,11 @@ import Gallery from "@/components/Gallery";
 import Speakers from "@/components/Speaker";
 import Sponsors from "@/components/Sponsor";
 import Footer from "@/components/Footer";
-import Background from "@/components/Background";
 import Partners from "@/components/Partner";
 
 export default function Home() {
   return (
-    <div className=" font-operetta-12 bg-transparent text-[#232b34]">
-      <Background />
+    <div className="font-open-sans bg-transparent text-[#232b34]">
       <Navbar />
       <Hero />
       <Description />
