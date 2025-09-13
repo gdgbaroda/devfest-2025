@@ -4,10 +4,12 @@ import Sponsors from "@/components/Sponsor";
 
 export default function Schedule() {
   return (
-    <div className="font-open-sans text-[#232b34]">
+    <div className="min-h-screen flex flex-col font-open-sans text-[#232b34]">
       <Navbar />
-      <div className="mt-32">
-        <Sponsors />
+      <div className="flex-1 flex flex-col">
+        <div className="mt-32">
+          <Sponsors />
+        </div>
       </div>
       <Footer />
     </div>

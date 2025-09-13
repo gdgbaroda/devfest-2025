@@ -9,14 +9,16 @@ import Partners from "@/components/Partner";
 
 export default function Home() {
   return (
-    <div className="font-open-sans bg-transparent text-[#232b34]">
+    <div className="min-h-screen flex flex-col font-open-sans bg-transparent text-[#232b34]">
       <Navbar />
-      <Hero />
-      <Description />
-      <Gallery title="Past devfests" description="" />
-      <Speakers />
-      <Sponsors />
-      <Partners />
+      <main className="flex-1 flex flex-col">
+        <Hero />
+        <Description />
+        <Gallery title="Past devfests" description="" />
+        <Speakers />
+        <Sponsors />
+        <Partners />
+      </main>
       <Footer />
     </div>
   );

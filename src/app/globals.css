@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  height: screen;
+  /* Ensure root participates in full-height layouts */
+  height: 100%;
 }
 
 @layer base {
@@ -69,6 +70,12 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Improve default media behavior on small screens */
+img, svg, video {
+  max-width: 100%;
+  height: auto;
 }
 
 @keyframes aurora {

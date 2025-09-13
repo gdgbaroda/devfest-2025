@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 
 const organizers = [
@@ -49,16 +50,8 @@ const volunteers = [
     image: "/team/volunteers/Devansh_Rajan.png",
   },
   {
-    name: "Divya Chhabaria",
-    image: "/team/volunteers/Divya_Chhabaria.png",
-  },
-  {
     name: "Naiteek Chokshi",
     image: "/team/volunteers/Naiteek_Chokshi.png",
-  },
-  {
-    name: "Riddhika Cheruku",
-    image: "/team/volunteers/Riddhika_Cheruku.png",
   },
   {
     name: "Rutunj Parikh",
@@ -79,29 +72,23 @@ export default function AboutSection() {
     <div className="min-h-screen w-full flex flex-col justify-center items-center text-[#232b34]">
       <div className="w-full px-6 md:px-8 lg:px-16 xl:px-32 p-4">
         <div className="group relative max-w-4xl mx-auto">
-          {/* Shadow/Background frame */}
-          <div
-            className="absolute inset-0
-                                  border-2 border-[#232b34] bg-[#1b2631] translate-x-1 translate-y-1"
-          ></div>
-
           {/* Main frame */}
-          <div className="relative border-2 border-[#232b34] bg-[#eed7ca]">
+          <div className="relative rounded-3xl overflow-hidden shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110">
             <Image
-              src="/banner.png"
+              src="/GroupPhoto1.jpg"
               alt="About"
               width={1920}
               height={1080}
               className="w-full h-auto"
               priority={true}
-              quality={100}
+              quality={70}
             />
           </div>
         </div>
 
         <div className="text-center mt-6 md:mt-8 max-w-4xl mx-auto">
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-zinc-900">
-            GDG Baroda: DevFest 2025
+            GDG Baroda
           </h1>
           <div className="font-open-sans text-sm md:text-base lg:text-lg">
             <p className="mb-3 md:mb-4">
@@ -151,19 +138,8 @@ export default function AboutSection() {
               className="group flex flex-col items-center w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)]"
             >
               <div className="relative">
-                {/* Shadow/Background frame */}
-                <div
-                  className="absolute w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square 
-                                              border-2 border-[#232b34] bg-[#1b2631] translate-x-1 translate-y-1"
-                ></div>
-
                 {/* Main frame */}
-                <div
-                  className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square
-                                              border-2 border-[#232b34] bg-[#eed7ca]
-                                              transition-transform duration-100 
-                                              group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
-                >
+                <div className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square overflow-hidden rounded-3xl shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110">
                   <div className="relative w-full h-full">
                     <Image
                       src={member.image}
@@ -171,9 +147,7 @@ export default function AboutSection() {
                       fill
                       className="object-cover"
                       quality={70}
-                      sizes="(max-width: 768px) 130px,
-                                                   (max-width: 1024px) 160px,
-                                                   180px"
+                      sizes="(max-width: 768px) 130px,(max-width: 1024px) 160px,180px"
                     />
                   </div>
                 </div>
@@ -201,19 +175,8 @@ export default function AboutSection() {
               className="group flex flex-col items-center w-[calc(50%-8px)] sm:w-[calc(33.333%-16px)] md:w-[calc(25%-16px)] lg:w-[calc(20%-16px)]"
             >
               <div className="relative">
-                {/* Shadow/Background frame */}
-                <div
-                  className="absolute w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square 
-                                              border-2 border-[#232b34] bg-[#1b2631] translate-x-1 translate-y-1"
-                ></div>
-
                 {/* Main frame */}
-                <div
-                  className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square
-                                              border-2 border-[#232b34] bg-[#eed7ca]
-                                              transition-transform duration-100 
-                                              group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
-                >
+                <div className="relative w-[120px] sm:w-[130px] md:w-[160px] lg:w-[180px] aspect-square overflow-hidden rounded-3xl shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110">
                   <div className="relative w-full h-full">
                     <Image
                       src={member.image}

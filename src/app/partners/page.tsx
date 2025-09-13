@@ -4,10 +4,12 @@ import Partner from "@/components/Partner";
 
 export default function Partners() {
   return (
-    <div className="font-open-sans text-[#232b34]">
+    <div className="min-h-screen flex flex-col font-open-sans text-[#232b34]">
       <Navbar />
-      <div className="mt-32">
-        <Partner />
+      <div className="flex-1 flex flex-col">
+        <div className="mt-32">
+          <Partner />
+        </div>
       </div>
       <Footer />
     </div>

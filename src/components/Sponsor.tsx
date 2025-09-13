@@ -23,7 +23,7 @@ export default function Sponsors() {
       {/* {sponsors.map((sponsor, index) => ( */}
       {/* <div key={index} className="group relative"> */}
       {/* Main frame */}
-      {/* <div className="relative w-[150px] sm:w-[180px] md:w-[220px] lg:w-[250px] aspect-square rounded-3xl overflow-hidden shadow-[0_8px_20px_-8px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out will-change-transform transform-gpu group-hover:-translate-y-1 group-hover:shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] group-hover:saturate-110"> */}
+      {/* <div className="relative w-[150px] sm:w-[180px] md:w-[220px] lg:w-[250px] aspect-square rounded-3xl overflow-hidden shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110"> */}
       {/* <div className="relative w-full h-full p-4 sm:p-6 md:p-8"> */}
       {/* <Image */}
       {/* src={sponsor.logo} */}

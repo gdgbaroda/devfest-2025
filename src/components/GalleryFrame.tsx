@@ -10,7 +10,7 @@ export default function GalleryFrame({
   return (
     <div className={`group relative ${className}`}>
       {/* Main frame */}
-      <div className="relative h-full w-full bg-[#eed7ca] rounded-3xl overflow-hidden shadow-[0_8px_20px_-8px_rgba(0,0,0,0.25)] transition-all duration-300 ease-out will-change-transform transform-gpu group-hover:-translate-y-1 group-hover:shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] group-hover:saturate-110">
+      <div className="relative h-full w-full bg-[#eed7ca] rounded-3xl overflow-hidden shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110">
         {/* Image layer with subtle scale on hover */}
         <div className="absolute inset-0">
           <Image

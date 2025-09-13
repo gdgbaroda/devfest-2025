@@ -24,10 +24,10 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/hhw1sjp.css" />
       </head>
-      <body className="relative">
+      <body className="relative min-h-screen flex flex-col">
         <SmoothScroll />
         <Background />
-        {children}
+        <div className="flex-1 flex flex-col">{children}</div>
       </body>
     </html>
   );

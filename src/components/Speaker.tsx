@@ -12,7 +12,7 @@ export default function Speakers() {
       </p>
       <div
         className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 
-                          gap-y-12 sm:gap-8 md:gap-8 lg:gap-28"
+                          gap-4 sm:gap-6 md:gap-8 lg:gap-28"
       >
         {speakersData.map((speaker, index) => (
           <SpeakerFrame

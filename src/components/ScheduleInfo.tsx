@@ -5,7 +5,7 @@ import Callout from "./Callout";
 
 export default function ScheduleInfo() {
   return (
-    <div className="flex flex-col w-full px-4 md:px-8 lg:px-16 xl:px-32 pt-32">
+    <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 my-10 md:my-16 gap-6 md:gap-10 items-center text-center">
       <div className="max-w-4xl mx-auto w-full">
         {/* Header */}
         <div className="text-center flex flex-col space-y-10 items-center justify-center mb-12 md:mb-16">

@@ -1,18 +1,20 @@
+"use client";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="flex flex-col bottom-0 w-full h-64 px-4 md:px-8 lg:px-16 xl:px-32 space-y-10 justify-center items-center">
+    <div className="mt-auto flex flex-col bottom-0 w-full px-4 md:px-8 lg:px-16 xl:px-32 py-10 md:py-12 space-y-8 justify-center items-center">
       <Separator className="my-4 bg-[#232b34]" />
       <div className="flex flex-col-reverse md:flex-row justify-between items-center w-full gap-6 md:gap-0">
         <div className="flex flex-col items-center md:items-start md:space-y-2">
           <Image
             src="/GDG_Baroda_Logo.svg"
             alt="DevFest Logo"
-            width={200}
-            height={200}
-            className="h-12 w-34 lg:h-8 lg:w-auto"
+            width={220}
+            height={60}
+            className="h-8 sm:h-10 md:h-10 lg:h-10 w-auto"
+            sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 220px"
           />
           <span className="font-open-sans opacity-75 text-center md:text-left">
             © 2025 GDG Baroda{" "}
@@ -25,6 +27,7 @@ export default function Footer() {
               href="https://twitter.com/gdgbaroda"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GDG Baroda on X"
             >
               <Image
                 src="/icons/x.svg"
@@ -38,6 +41,7 @@ export default function Footer() {
               href="https://in.linkedin.com/company/gdgbaroda"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GDG Baroda on LinkedIn"
             >
               <Image
                 src="/icons/linkedin.svg"
@@ -51,6 +55,7 @@ export default function Footer() {
               href="https://www.instagram.com/gdgbaroda"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GDG Baroda on Instagram"
             >
               <Image
                 src="/icons/instagram.svg"
@@ -64,6 +69,7 @@ export default function Footer() {
               href="https://www.facebook.com/GDGBaroda"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GDG Baroda on Facebook"
             >
               <Image
                 src="/icons/facebook.svg"
@@ -77,6 +83,7 @@ export default function Footer() {
               href="https://www.youtube.com/channel/UCdAjNjPWNIXNaxu4mGJc3uw"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GDG Baroda on YouTube"
             >
               <Image
                 src="/icons/youtube.svg"

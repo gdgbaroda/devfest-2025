@@ -3,7 +3,7 @@ import Callout from "./Callout";
 
 export default function Partner() {
   return (
-    <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 mb-0 gap-6 md:gap-10 items-center text-center">
+    <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 my-10 md:my-16 gap-6 md:gap-10 items-center text-center">
       <h1 className="font-open-sans text-3xl lg:text-4xl font-bold">
         Community Partners
       </h1>

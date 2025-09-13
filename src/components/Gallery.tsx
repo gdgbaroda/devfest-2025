@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import GalleryFrame from "./GalleryFrame";
-import { DirectionAwareHover } from "./ui/direction-aware-hover";
 
 export default function Gallery({
   title,
@@ -33,9 +32,11 @@ export default function Gallery({
 
   return (
     <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 my-10 md:my-16 gap-4 md:gap-10">
-      <h1 className="font-open-sans text-3xl lg:text-4xl font-bold">{title}</h1>
+      <h1 className="font-open-sans text-3xl lg:text-4xl font-bold text-center">
+        {title}
+      </h1>
       <h2
-        className={`font-open-sans text-lg md:text-xl text-gray-700 ${
+        className={`font-open-sans text-lg md:text-xl text-gray-700 text-center ${
           description ? "" : "hidden"
         }`}
       >

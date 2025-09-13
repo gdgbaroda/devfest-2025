@@ -63,9 +63,10 @@ export default function Navbar() {
             src="/GDG_Baroda_Logo.svg"
             alt="DevFest Logo"
             priority={true}
-            width={200}
-            height={200}
-            className="h-auto w-34 lg:h-auto lg:w-56"
+            width={224}
+            height={60}
+            className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto"
+            sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 224px"
           />
         </div>
 
