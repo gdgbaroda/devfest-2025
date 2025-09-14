@@ -9,8 +9,9 @@ export default function Footer() {
       <div className="flex flex-col-reverse md:flex-row justify-between items-center w-full gap-6 md:gap-0">
         <div className="flex flex-col items-center md:items-start md:space-y-2">
           <Image
-            src="/GDG_Baroda_Logo.svg"
+            src="/GDG_Baroda_Logo.png"
             alt="DevFest Logo"
+            priority={true}
             width={220}
             height={60}
             className="h-8 sm:h-10 md:h-10 lg:h-10 w-auto"

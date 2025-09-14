@@ -60,13 +60,13 @@ export default function Navbar() {
           onClick={() => handleNavigation("/")}
         >
           <Image
-            src="/GDG_Baroda_Logo.svg"
+            src="/GDG_Baroda_Logo.png"
             alt="DevFest Logo"
             priority={true}
             width={224}
             height={60}
             className="h-8 sm:h-9 md:h-10 lg:h-12 w-auto"
-            sizes="(max-width: 640px) 160px, (max-width: 1024px) 200px, 224px"
+            sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 220px"
           />
         </div>
 
@@ -103,7 +103,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex gap-4 lg:gap-8 text-gray-700 text-base lg:text-lg text-center">
+        <div className="hidden md:flex gap-4 lg:gap-8 text-gray-700 text-lg lg:text-xl text-center">
           {navigation.map((item) => (
             <div
               key={item.name}

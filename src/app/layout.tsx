@@ -1,7 +1,7 @@
 import "./globals.css";
+import localFont from "next/font/local";
 import Background from "@/components/Background";
 import SmoothScroll from "@/components/SmoothScroll";
-import localFont from "next/font/local";
 
 const googleFont = localFont({
   src: [
@@ -27,6 +27,8 @@ const googleFont = localFont({
 
 export const metadata = {
   title: "DevFest 2025 | GDG Baroda",
+  description:
+    "Join us for DevFest 2025 in Baroda - A developer conference by GDG Baroda",
   icons: {
     icon: [
       {
@@ -45,7 +47,37 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${googleFont.variable}`}>
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/hhw1sjp.css" />
+        {/* Preload critical resources first */}
+        <link
+          rel="preload"
+          href="/GDG_Baroda_Logo.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link
+          rel="preload"
+          href="/DF25-Logo-Lockup.svg"
+          as="image"
+          type="image/svg+xml"
+        />
+        <link rel="preload" href="/Background.png" as="image" />
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//use.typekit.net" />
+        {/* Preconnect to external domains */}
+        <link
+          rel="preconnect"
+          href="https://use.typekit.net"
+          crossOrigin="anonymous"
+        />
+        {/* Load external CSS asynchronously to prevent render blocking */}
+        <link
+          rel="preload"
+          href="https://use.typekit.net/hhw1sjp.css"
+          as="style"
+        />
+        <noscript>
+          <link rel="stylesheet" href="https://use.typekit.net/hhw1sjp.css" />
+        </noscript>
       </head>
       <body className="relative min-h-screen flex flex-col font-google">
         <SmoothScroll />
