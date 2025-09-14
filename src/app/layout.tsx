@@ -1,7 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
-import Background from "@/components/Background";
-import SmoothScroll from "@/components/SmoothScroll";
+import ClientLayout from "@/components/ClientLayout";
 
 const googleFont = localFont({
   src: [
@@ -80,9 +79,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className="relative min-h-screen flex flex-col font-google">
-        <SmoothScroll />
-        <Background />
-        <div className="flex-1 flex flex-col">{children}</div>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

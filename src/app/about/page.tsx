@@ -1,8 +1,10 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import AboutSection from "@/components/AboutSection";
 import Footer from "@/components/Footer";
 
-export default function Schedule() {
+export default function About() {
   return (
     <div className="min-h-screen flex flex-col  text-[#232b34]">
       <Navbar />

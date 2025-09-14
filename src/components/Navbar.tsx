@@ -16,15 +16,22 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isMounted]);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -50,7 +57,7 @@ export default function Navbar() {
   return (
     <div
       className={`fixed top-6 inset-x-4 sm:inset-x-6 md:inset-x-10 lg:inset-x-24 xl:inset-x-32 z-10 select-none flex h-20 bg-transparent rounded-full ${
-        hasScrolled ? "backdrop-blur-3xl shadow-md" : "shadow-none"
+        isMounted && hasScrolled ? "backdrop-blur-3xl shadow-md" : "shadow-none"
       }`}
     >
       <div className="flex w-full justify-between items-center p-2 md:p-8 px-4 md:px-14 lg:px-32">

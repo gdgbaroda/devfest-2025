@@ -2,7 +2,7 @@ import sponsorsData from "@/data/sponsors";
 import Image from "next/image";
 import Callout from "./Callout";
 
-export default function Sponsors() {
+export default function SponsorsList() {
   return (
     <div className="flex flex-col h-full w-full px-4 md:px-8 lg:px-16 xl:px-32 my-10 md:my-16 gap-6 md:gap-10 items-center text-center">
       <h1 className=" text-3xl lg:text-4xl font-bold">Sponsors</h1>

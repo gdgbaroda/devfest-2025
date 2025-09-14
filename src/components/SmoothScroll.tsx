@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Tweakable controls
 const DAMPING = 0.1; // 0.05 = very slow, 0.2 = faster
@@ -79,8 +79,14 @@ export default function SmoothScroll() {
   const current = useRef<number>(0);
   const target = useRef<number>(0);
   const disabled = useRef<boolean>(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
     const isMobile = isMobilePhone();
     const prefersReduced = prefersReducedMotion();
     disabled.current = isMobile || prefersReduced;
@@ -239,7 +245,11 @@ export default function SmoothScroll() {
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("keydown", onKey);
     };
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return null;
 }
