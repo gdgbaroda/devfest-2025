@@ -9,12 +9,7 @@ export default function PartnerFrame({
 }) {
   return (
     <div className="group relative">
-      <div
-        className="relative w-[130px] md:w-[160px] lg:w-[180px] aspect-square
-                          border-2 border-[#232b34] bg-[#eed7ca] rounded-3xl overflow-hidden
-                          transition-transform duration-100 
-                          group-hover:-translate-x-0.5 group-hover:-translate-y-0.5"
-      >
+      <div className="relative w-[130px] md:w-[160px] lg:w-[180px] aspect-square rounded-3xl overflow-hidden shadow-[0_18px_35px_-10px_rgba(0,0,0,0.35)] saturate-110">
         <div className="relative w-full h-full p-3 md:p-6">
           <Image
             src={logo}
