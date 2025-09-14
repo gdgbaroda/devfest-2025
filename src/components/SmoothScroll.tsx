@@ -6,13 +6,29 @@ const DAMPING = 0.1; // 0.05 = very slow, 0.2 = faster
 const WHEEL_MULTIPLIER = 0.8; // < 1 slows wheel, > 1 speeds it up
 const STOP_THRESHOLD = 0.5; // px distance to snap to target
 
-function isCoarsePointer(): boolean {
-  if (typeof window === "undefined" || !("matchMedia" in window)) return false;
-  try {
-    return window.matchMedia("(pointer: coarse)").matches;
-  } catch {
-    return false;
+function isMobileDevice(): boolean {
+  if (typeof window === "undefined") return false;
+
+  // Check for touch capability
+  const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+  // Check for mobile user agent
+  const isMobileUA =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+
+  // Check for coarse pointer (touch devices)
+  let isCoarsePointer = false;
+  if ("matchMedia" in window) {
+    try {
+      isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    } catch {
+      isCoarsePointer = false;
+    }
   }
+
+  return hasTouch || isMobileUA || isCoarsePointer;
 }
 
 function prefersReducedMotion(): boolean {
@@ -28,7 +44,7 @@ function hasScrollableAncestor(
   el: EventTarget | null,
   deltaY: number
 ): boolean {
-  let node = (el as HTMLElement) || null;
+  const node = (el as HTMLElement) || null;
   while (node && node !== document.body && node !== document.documentElement) {
     const style = getComputedStyle(node);
     const oy = style.overflowY;
@@ -40,7 +56,6 @@ function hasScrollableAncestor(
       if ((deltaY < 0 && top > 0) || (deltaY > 0 && top < max)) return true;
     }
     // Move up the tree to avoid infinite loop
-    node = node.parentElement as HTMLElement | null;
   }
   // Allow the page to handle it (we will hijack at window level)
   return false;
@@ -53,7 +68,7 @@ export default function SmoothScroll() {
   const disabled = useRef<boolean>(false);
 
   useEffect(() => {
-    disabled.current = isCoarsePointer() || prefersReducedMotion();
+    disabled.current = isMobileDevice() || prefersReducedMotion();
     current.current = window.scrollY;
     target.current = window.scrollY;
 
