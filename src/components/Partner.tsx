@@ -10,8 +10,8 @@ export default function Partner() {
       </p>
       {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center"> */}
       <div className="flex justify-center w-full">
-        <PartnerFrame name={"JetBrains"} logo={"/logo/jetbrains.svg"} />
-        {/* <PartnerFrame name={"Appmattic"} logo={"/logo/Appmattic.svg"} />
+        {/* <PartnerFrame name={"JetBrains"} logo={"/logo/jetbrains.svg"} /> */}
+        <PartnerFrame name={"Appmattic"} logo={"/logo/Appmattic.svg"} />
         <PartnerFrame name={"Atliq"} logo={"/logo/Atliq.svg"} />
         <PartnerFrame name={"Atyantik"} logo={"/logo/Atyantik.svg"} />
         <PartnerFrame name={"AV Devs"} logo={"/logo/AVDevs.svg"} />
@@ -21,7 +21,7 @@ export default function Partner() {
         <PartnerFrame name={"Pardy Panda"} logo={"/logo/pardy-panda.svg"} />
         <PartnerFrame name={"Pavans"} logo={"/logo/Pavans.svg"} />
         <PartnerFrame name={"SunflowerLabs"} logo={"/logo/SunflowerLabs.svg"} />
-        <PartnerFrame name={"Anormaly"} logo={"/logo/Anormaly.svg"} /> */}
+        <PartnerFrame name={"Anormaly"} logo={"/logo/Anormaly.svg"} />
       </div>
     </div>
   );
