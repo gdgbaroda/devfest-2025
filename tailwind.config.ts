@@ -23,6 +23,7 @@ export default {
         "operetta-32": ['"operetta-32"', "serif"],
         "open-sans": ['"open-sans"', "sans-serif"],
         "open-sans-condensed": ['"open-sans-condensed"', "sans-serif"],
+        google: ["var(--font-google-font)"],
       },
       colors: {
         background: "hsl(var(--background))",

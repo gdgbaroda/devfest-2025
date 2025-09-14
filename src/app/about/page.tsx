@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export default function Schedule() {
   return (
-    <div className="min-h-screen flex flex-col font-open-sans text-[#232b34]">
+    <div className="min-h-screen flex flex-col  text-[#232b34]">
       <Navbar />
       <div className="flex-1 flex flex-col">
         <div className="mt-36">

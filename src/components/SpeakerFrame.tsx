@@ -33,18 +33,16 @@ export default function SpeakerFrame({
 
       {/* Text content */}
       <div className="relative flex flex-col items-center space-y-1">
-        <h3 className="font-open-sans text-lg md:text-xl lg:text-2xl font-bold whitespace-pre-line">
+        <h3 className=" text-lg md:text-xl lg:text-2xl font-bold whitespace-pre-line">
           {name}
         </h3>
         {role && (
-          <p className="font-open-sans text-sm md:text-base text-gray-900 whitespace-pre-line">
+          <p className=" text-sm md:text-base text-gray-900 whitespace-pre-line">
             {role}
           </p>
         )}
         {company && (
-          <p className="font-open-sans text-sm md:text-base text-zinc-600">
-            {company}
-          </p>
+          <p className=" text-sm md:text-base text-zinc-600">{company}</p>
         )}
       </div>
     </div>

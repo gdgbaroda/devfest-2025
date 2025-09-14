@@ -16,12 +16,12 @@ export default function Footer() {
             className="h-8 sm:h-10 md:h-10 lg:h-10 w-auto"
             sizes="(max-width: 640px) 150px, (max-width: 1024px) 200px, 220px"
           />
-          <span className="font-open-sans opacity-75 text-center md:text-left">
+          <span className=" opacity-75 text-center md:text-left">
             © 2025 GDG Baroda{" "}
           </span>
         </div>
         <div className="flex flex-col items-center md:items-start space-y-4">
-          <span className="font-open-sans opacity-75">Follow Us</span>
+          <span className=" opacity-75">Follow Us</span>
           <div className="flex items-center space-x-6">
             <a
               href="https://twitter.com/gdgbaroda"

@@ -49,14 +49,14 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed top-6 inset-x-4 sm:inset-x-6 md:inset-x-10 lg:inset-x-24 xl:inset-x-32 font-open-sans z-10 select-none flex h-20 bg-transparent rounded-full ${
+      className={`fixed top-6 inset-x-4 sm:inset-x-6 md:inset-x-10 lg:inset-x-24 xl:inset-x-32 z-10 select-none flex h-20 bg-transparent rounded-full ${
         hasScrolled ? "backdrop-blur-3xl shadow-md" : "shadow-none"
       }`}
     >
       <div className="flex w-full justify-between items-center p-2 md:p-8 px-4 md:px-14 lg:px-32">
         {/* Logo */}
         <div
-          className="cursor-pointer text-center select-none"
+          className="cursor-pointer text-center select-none font-bold"
           onClick={() => handleNavigation("/")}
         >
           <Image
@@ -83,7 +83,7 @@ export default function Navbar() {
               <SheetHeader>
                 <SheetTitle className="text-gray-700"></SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col gap-4 mt-10 text-center font-open-sans">
+              <div className="flex flex-col gap-4 mt-10 text-center ">
                 {navigation.map((item) => (
                   <div
                     key={item.name}

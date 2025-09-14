@@ -9,7 +9,7 @@ import Partners from "@/components/Partner";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col font-open-sans bg-transparent text-[#232b34]">
+    <div className="min-h-screen flex flex-col  bg-transparent text-[#232b34]">
       <Navbar />
       <main className="flex-1 flex flex-col">
         <Hero />

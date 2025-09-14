@@ -90,7 +90,7 @@ export default function AboutSection() {
           <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-zinc-900">
             GDG Baroda
           </h1>
-          <div className="font-open-sans text-sm md:text-base lg:text-lg">
+          <div className=" text-sm md:text-base lg:text-lg">
             <p className="mb-3 md:mb-4">
               DevFest Baroda is a technology conference celebrating innovation,
               creativity, and collaboration in the world of software
@@ -154,7 +154,7 @@ export default function AboutSection() {
               </div>
 
               <div className="mt-2 md:mt-4 text-center">
-                <h3 className="font-open-sans text-base md:text-lg lg:text-xl font-bold whitespace-pre-line">
+                <h3 className=" text-base md:text-lg lg:text-xl font-bold whitespace-pre-line">
                   {member.name}
                 </h3>
               </div>
@@ -192,7 +192,7 @@ export default function AboutSection() {
               </div>
 
               <div className="mt-2 md:mt-4 text-center">
-                <h3 className="font-open-sans text-base md:text-lg lg:text-xl font-bold whitespace-pre-line">
+                <h3 className=" text-base md:text-lg lg:text-xl font-bold whitespace-pre-line">
                   {member.name}
                 </h3>
               </div>

@@ -9,11 +9,11 @@ export default function ScheduleInfo() {
       <div className="max-w-4xl mx-auto w-full">
         {/* Header */}
         <div className="text-center flex flex-col space-y-10 items-center justify-center mb-12 md:mb-16">
-          <h1 className="font-open-sans text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h1 className=" text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Event Schedule
           </h1>
           <Callout title="Stay tuned for the event schedule!" />
-          {/* <p className="font-open-sans text-gray-600 text-lg md:text-xl">
+          {/* <p className=" text-gray-600 text-lg md:text-xl">
             December 1, 2024
           </p> */}
         </div>
@@ -26,7 +26,7 @@ export default function ScheduleInfo() {
         {/* (section: ScheduleSection, sectionIndex: number) => ( */}
         {/* <div key={sectionIndex} className="group relative"> */}
         {/* Section Items */}
-        {/* <div className="font-open-sans"> */}
+        {/* <div className=""> */}
         {/* {section.items.map((item, itemIndex) => ( */}
         {/* <div key={itemIndex}> */}
         {/* <div */}
