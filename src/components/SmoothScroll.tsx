@@ -6,29 +6,41 @@ const DAMPING = 0.1; // 0.05 = very slow, 0.2 = faster
 const WHEEL_MULTIPLIER = 0.8; // < 1 slows wheel, > 1 speeds it up
 const STOP_THRESHOLD = 0.5; // px distance to snap to target
 
-function isMobileDevice(): boolean {
+function isMobilePhone(): boolean {
   if (typeof window === "undefined") return false;
 
-  // Check for touch capability
-  const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-
-  // Check for mobile user agent
-  const isMobileUA =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  // Check for mobile phone user agent (excluding tablets)
+  const isMobilePhoneUA =
+    /Android.*Mobile|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent
     );
 
-  // Check for coarse pointer (touch devices)
-  let isCoarsePointer = false;
-  if ("matchMedia" in window) {
-    try {
-      isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
-    } catch {
-      isCoarsePointer = false;
-    }
+  // Check for small screen size (mobile phones typically < 768px)
+  const isSmallScreen = window.innerWidth < 768;
+
+  // Check for touch capability combined with small screen
+  const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  const isTouchPhone = hasTouch && isSmallScreen;
+
+  const isMobile = isMobilePhoneUA || isTouchPhone;
+
+  // Debug logging (remove in production)
+  if (
+    typeof window !== "undefined" &&
+    window.location.hostname === "localhost"
+  ) {
+    console.log("Mobile detection:", {
+      isMobilePhoneUA,
+      isSmallScreen,
+      hasTouch,
+      isTouchPhone,
+      isMobile,
+      userAgent: navigator.userAgent,
+      screenWidth: window.innerWidth,
+    });
   }
 
-  return hasTouch || isMobileUA || isCoarsePointer;
+  return isMobile;
 }
 
 function prefersReducedMotion(): boolean {
@@ -44,7 +56,7 @@ function hasScrollableAncestor(
   el: EventTarget | null,
   deltaY: number
 ): boolean {
-  const node = (el as HTMLElement) || null;
+  let node: HTMLElement | null = (el as HTMLElement) || null;
   while (node && node !== document.body && node !== document.documentElement) {
     const style = getComputedStyle(node);
     const oy = style.overflowY;
@@ -56,6 +68,7 @@ function hasScrollableAncestor(
       if ((deltaY < 0 && top > 0) || (deltaY > 0 && top < max)) return true;
     }
     // Move up the tree to avoid infinite loop
+    node = node.parentElement;
   }
   // Allow the page to handle it (we will hijack at window level)
   return false;
@@ -68,7 +81,23 @@ export default function SmoothScroll() {
   const disabled = useRef<boolean>(false);
 
   useEffect(() => {
-    disabled.current = isMobileDevice() || prefersReducedMotion();
+    const isMobile = isMobilePhone();
+    const prefersReduced = prefersReducedMotion();
+    disabled.current = isMobile || prefersReduced;
+
+    // Debug logging
+    if (
+      typeof window !== "undefined" &&
+      window.location.hostname === "localhost"
+    ) {
+      console.log("SmoothScroll initialized:", {
+        isMobile,
+        prefersReduced,
+        disabled: disabled.current,
+        scrollY: window.scrollY,
+      });
+    }
+
     current.current = window.scrollY;
     target.current = window.scrollY;
 
@@ -108,6 +137,19 @@ export default function SmoothScroll() {
     };
 
     const onWheel = (e: WheelEvent) => {
+      // Debug logging
+      if (
+        typeof window !== "undefined" &&
+        window.location.hostname === "localhost"
+      ) {
+        console.log("Wheel event:", {
+          disabled: disabled.current,
+          deltaY: e.deltaY,
+          ctrlKey: e.ctrlKey,
+          target: e.target,
+        });
+      }
+
       if (disabled.current) return;
       // Don't interfere with pinch-zoom
       if (e.ctrlKey) return;
