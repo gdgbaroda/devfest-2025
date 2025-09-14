@@ -8,8 +8,7 @@ export default function Partner() {
         Our community partners play a vital role in supporting and enhancing our
         event. We are thankful for their collaboration and commitment.
       </p>
-      {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center"> */}
-      <div className="flex justify-center w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center">
         {/* <PartnerFrame name={"JetBrains"} logo={"/logo/jetbrains.svg"} /> */}
         <PartnerFrame name={"Appmattic"} logo={"/logo/Appmattic.svg"} />
         <PartnerFrame name={"Atliq"} logo={"/logo/Atliq.svg"} />
