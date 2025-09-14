@@ -2,10 +2,6 @@ import Image from "next/image";
 
 const organizers = [
   {
-    name: "Akhil Tushar",
-    image: "/team/organizers/akhil_tushar.jpg",
-  },
-  {
     name: "Dron Trivedi",
     image: "/team/organizers/dron_trivedi.png",
   },
@@ -20,10 +16,6 @@ const organizers = [
   {
     name: "Kushal Dave",
     image: "/team/organizers/kushal_dave.png",
-  },
-  {
-    name: "Prachi Durge",
-    image: "/team/organizers/prachi.png",
   },
   {
     name: "Rahul Banker",
