@@ -6,6 +6,10 @@ const organizers = [
     image: "/team/organizers/dron_trivedi.png",
   },
   {
+    name: "Jigish Dalal",
+    image: "/team/organizers/jigish.jpeg",
+  },
+  {
     name: "Hardik Mistry",
     image: "/team/organizers/hardikmistry.jpeg",
   },

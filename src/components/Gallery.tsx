@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import GalleryFrame from "./GalleryFrame";
 
 export default function Gallery({
   title,
@@ -10,34 +9,10 @@ export default function Gallery({
   description: string;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const images = [
-    "/gallery/3.jpg",
-    "/gallery/1.jpg",
-    "/gallery/2.jpg",
-    "/gallery/11.jpg",
-    "/gallery/7.jpg",
-    "/gallery/10.jpg",
-    "/gallery/6.jpg",
-    "/gallery/8.jpg",
-    "/gallery/5.jpg",
-    "/gallery/4.jpg",
-    "/gallery/13.jpg",
-    "/gallery/12.jpg",
-  ];
-
-  const spans = [
-    "col-span-2 row-span-2 lg:col-span-2 lg:row-span-3", // Large feature
-    "col-span-2 row-span-1 lg:col-span-2 lg:row-span-2", // Medium horizontal
-    "col-span-1 row-span-2 lg:col-span-2 lg:row-span-2", // Medium vertical
-    "col-span-1 row-span-1 lg:col-span-2 lg:row-span-2", // Small square
-    "col-span-2 row-span-2 lg:col-span-2 lg:row-span-3", // Large feature
-    "col-span-2 row-span-1 lg:col-span-2 lg:row-span-2", // Medium horizontal
-    "col-span-1 row-span-2 lg:col-span-2 lg:row-span-2", // Medium vertical
-    "col-span-1 row-span-1 lg:col-span-2 lg:row-span-2", // Small square
-    "col-span-2 row-span-2 lg:col-span-2 lg:row-span-3", // Large feature
-    "col-span-2 row-span-1 lg:col-span-2 lg:row-span-2", // Medium horizontal
-    "col-span-1 row-span-2 lg:col-span-2 lg:row-span-2", // Medium vertical
-    "col-span-1 row-span-1 lg:col-span-2 lg:row-span-2", // Small square
+  const videos = [
+    "https://www.youtube.com/embed/CfdT0RodRlM?si=LAI4PxoXduAKmzfK",
+    "https://www.youtube.com/embed/wsnh0GGxlp8?si=D2jTgn4Q8R0CiWoO",
+    "https://www.youtube.com/embed/2YKPrMRYTdQ?si=-z-1Mud05pXAZonS",
   ];
 
   return (
@@ -50,23 +25,29 @@ export default function Gallery({
       >
         {description}
       </h2>
-      {/* Responsive masonry-style grid with dynamic sizing */}
       <div className="relative">
         <div
-          className={`grid grid-flow-dense grid-cols-4 md:grid-cols-6 lg:grid-cols-8 auto-rows-[100px] sm:auto-rows-[120px] md:auto-rows-[130px] lg:auto-rows-[140px] gap-3 md:gap-4 lg:gap-6 transition-[max-height] duration-500 ease-out overflow-hidden ${
-            expanded
-              ? "max-h-[3600px]"
-              : "max-h-[600px] md:max-h-[700px] lg:max-h-[800px]"
-          }`}
-          aria-expanded={expanded}
+          className={
+            "mx-auto w-full max-w-6xl transition-[max-height] duration-300 overflow-hidden " +
+            (expanded ? "max-h-[4000px]" : "max-h-[420px]")
+          }
         >
-          {images.map((src, i) => (
-            <GalleryFrame
-              key={src}
-              img={src}
-              className={`${spans[i]} hover:scale-[1.02] transition-transform duration-300`}
-            />
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 place-items-center">
+            {videos.map((src, idx) => (
+              <div key={idx} className="w-full">
+                <div className="relative w-full pt-[56.25%] rounded-3xl overflow-hidden">
+                  <iframe
+                    src={src}
+                    title={`YouTube video ${idx + 1}`}
+                    className="absolute inset-0 h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Bottom gradient/shadow overlay shown when collapsed */}
@@ -81,7 +62,7 @@ export default function Gallery({
             onClick={() => setExpanded((v) => !v)}
             className="relative z-[1] inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-xl font-bold text-gray-800 bg-white/80 backdrop-blur border border-gray-300 shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5"
           >
-            {expanded ? "Show less" : "Show all images"}
+            {expanded ? "Show less" : "Show all"}
           </button>
         </div>
       </div>
