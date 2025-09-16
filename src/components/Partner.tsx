@@ -19,6 +19,7 @@ export default function Partner() {
         <PartnerFrame name={"OneFrame"} logo={"/logo/OneFrame.svg"} />
         <PartnerFrame name={"Pardy Panda"} logo={"/logo/pardy-panda.svg"} />
         <PartnerFrame name={"Pavans"} logo={"/logo/Pavans.svg"} />
+        <PartnerFrame name={"Pict-O-Preserve"} logo={"/logo/picto.svg"} />
         <PartnerFrame name={"SunflowerLabs"} logo={"/logo/SunflowerLabs.svg"} />
         <PartnerFrame name={"Anormaly"} logo={"/logo/Anormaly.svg"} />
       </div>
