@@ -30,6 +30,18 @@ const speakersData: Speaker[] = [
     company: "AI Planet",
     img: "/speakers/tarun-r-jain.png",
   },
+  {
+    name: "Prajyot Mainkar",
+    role: "Founder",
+    company: "Sofueled",
+    img: "/speakers/prajyot-mainkar.jpg",
+  },
+  {
+    name: "Amey Nerkar",
+    role: "GDE for Payments",
+    company: "",
+    img: "/speakers/amey-nerkar.png",
+  },
 ];
 
 export default speakersData;
