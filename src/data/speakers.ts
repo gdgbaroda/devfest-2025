@@ -31,12 +31,6 @@ const speakersData: Speaker[] = [
     img: "/speakers/tarun-r-jain.png",
   },
   {
-    name: "Tarun Jain",
-    role: "Super Agent",
-    company: "AI Planet",
-    img: "/speakers/tarun-r-jain.png",
-  },
-  {
     name: "Prajyot Mainkar",
     role: "Founder",
     company: "Sofueled",
