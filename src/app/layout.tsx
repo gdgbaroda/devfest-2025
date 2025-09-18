@@ -49,9 +49,9 @@ export default function RootLayout({
         {/* Preload critical resources first */}
         <link
           rel="preload"
-          href="/GDG_Baroda_Logo.svg"
+          href="/GDG_Baroda_Logo.png"
           as="image"
-          type="image/svg+xml"
+          type="image/png"
         />
         <link
           rel="preload"
