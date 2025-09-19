@@ -24,22 +24,6 @@ function isMobilePhone(): boolean {
 
   const isMobile = isMobilePhoneUA || isTouchPhone;
 
-  // Debug logging (remove in production)
-  if (
-    typeof window !== "undefined" &&
-    window.location.hostname === "localhost"
-  ) {
-    console.log("Mobile detection:", {
-      isMobilePhoneUA,
-      isSmallScreen,
-      hasTouch,
-      isTouchPhone,
-      isMobile,
-      userAgent: navigator.userAgent,
-      screenWidth: window.innerWidth,
-    });
-  }
-
   return isMobile;
 }
 
@@ -91,19 +75,6 @@ export default function SmoothScroll() {
     const prefersReduced = prefersReducedMotion();
     disabled.current = isMobile || prefersReduced;
 
-    // Debug logging
-    if (
-      typeof window !== "undefined" &&
-      window.location.hostname === "localhost"
-    ) {
-      console.log("SmoothScroll initialized:", {
-        isMobile,
-        prefersReduced,
-        disabled: disabled.current,
-        scrollY: window.scrollY,
-      });
-    }
-
     current.current = window.scrollY;
     target.current = window.scrollY;
 
@@ -143,19 +114,6 @@ export default function SmoothScroll() {
     };
 
     const onWheel = (e: WheelEvent) => {
-      // Debug logging
-      if (
-        typeof window !== "undefined" &&
-        window.location.hostname === "localhost"
-      ) {
-        console.log("Wheel event:", {
-          disabled: disabled.current,
-          deltaY: e.deltaY,
-          ctrlKey: e.ctrlKey,
-          target: e.target,
-        });
-      }
-
       if (disabled.current) return;
       // Don't interfere with pinch-zoom
       if (e.ctrlKey) return;
