@@ -69,6 +69,18 @@ export default function QRTicketPage() {
             flex-direction: column;
             box-sizing: border-box;
           }
+
+          /* Remove all shadows for print */
+          .header-section,
+          .qr-section,
+          .qr-wrapper,
+          .venue-card,
+          .highlights,
+          .footer-section,
+          .date-card,
+          .register-btn {
+            box-shadow: none !important;
+          }
         }
 
         @media screen {
