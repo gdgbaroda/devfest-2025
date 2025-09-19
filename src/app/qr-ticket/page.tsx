@@ -403,7 +403,7 @@ export default function QRTicketPage() {
                 </div>
                 <div className="highlight-item">
                   <span className="check-mark">🎁</span>
-                  Swag & Food
+                  Unforgettable Moments
                 </div>
               </div>
             </div>
