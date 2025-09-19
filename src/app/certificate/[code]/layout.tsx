@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { ATTENDEES_DATA } from '@/data/attendees';
 
 // Edge Runtime configuration for Cloudflare Pages
 export const runtime = 'edge';
@@ -12,19 +13,16 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { code } = await params;
 
-  // Fetch actual attendee data for personalized metadata
+  // Find attendee data directly from embedded data (no HTTP fetch needed)
   let attendeeName = 'Attendee';
   try {
-    // Use relative path for server-side fetch in generateMetadata
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/api/attendee/${code}`);
-    if (response.ok) {
-      const data = await response.json();
-      attendeeName = data.name || 'Attendee';
+    const attendee = ATTENDEES_DATA.find(a => a.qrCode === code);
+    if (attendee) {
+      attendeeName = attendee.name;
     }
   } catch (error) {
-    // Fallback to generic name if fetch fails
-    console.error('Failed to fetch attendee data for metadata:', error);
+    // Fallback to generic name if lookup fails
+    console.error('Failed to lookup attendee data for metadata:', error);
   }
 
   return {
