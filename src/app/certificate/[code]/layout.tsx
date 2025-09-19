@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { ATTENDEES_DATA } from '../../../data/attendees.js';
+import { ATTENDEES_DATA } from '../../../data/attendees';
 
 // Edge Runtime configuration for Cloudflare Pages
 export const runtime = 'edge';
