@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ATTENDEES_DATA } from '../../../../data/attendees';
+import { ATTENDEES_DATA } from '@/lib/attendees';
 
 // Edge Runtime configuration for Cloudflare Pages
 export const runtime = 'edge';
