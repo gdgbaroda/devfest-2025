@@ -356,12 +356,13 @@ export default function QRTicketPage() {
                   <div className="text-gray-500">Generating...</div>
                 </div>
               ) : (
-                <img
+                <Image
                   src={qrCodeUrl}
                   alt="DevFest 2025 Registration QR"
                   width={320}
                   height={320}
                   className="block"
+                  unoptimized
                 />
               )}
             </div>

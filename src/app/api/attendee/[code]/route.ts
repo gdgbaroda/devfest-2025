@@ -14,10 +14,10 @@ interface AttendeeData {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ) {
   try {
-    const code = params.code;
+    const { code } = await params;
 
     // Read CSV from private data directory
     const csvPath = path.join(process.cwd(), 'data', 'attendees.csv');
