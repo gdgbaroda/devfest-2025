@@ -12,7 +12,7 @@ import {
   useState,
 } from "react";
 
-const MIN_ZOOM = 0.3;
+const MIN_ZOOM = 0;
 const MAX_ZOOM = 5;
 
 // Available frames - frame0 to frame4
@@ -70,6 +70,7 @@ function FrameEditor() {
   const [lastAutoScale, setLastAutoScale] = useState<FitMode | null>(null);
   const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isFrameLoading, setIsFrameLoading] = useState(false);
 
   const pointerState = useRef<{
     dragging: boolean;
@@ -238,10 +239,22 @@ function FrameEditor() {
     applyScale("fit");
   }, [imageSrc, applyScale]);
 
-  const handleNextFrame = useCallback(() => {
-    const nextIndex = (currentFrameIndex + 1) % AVAILABLE_FRAMES.length;
-    setCurrentFrameIndex(nextIndex);
-  }, [currentFrameIndex]);
+  const handleNextFrame = useCallback(async () => {
+    if (isFrameLoading) return; // Prevent multiple clicks during loading
+
+    setIsFrameLoading(true);
+
+    try {
+      const nextIndex = (currentFrameIndex + 1) % AVAILABLE_FRAMES.length;
+
+      // Add a small delay to show the loading animation
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      setCurrentFrameIndex(nextIndex);
+    } finally {
+      setIsFrameLoading(false);
+    }
+  }, [currentFrameIndex, isFrameLoading]);
 
   const downloadImage = useCallback(async () => {
     if (!imageSrc || !frameRef.current) {
@@ -380,6 +393,7 @@ function FrameEditor() {
         onDownload={downloadImage}
         isDownloading={isDownloading}
         onNextFrame={handleNextFrame}
+        isFrameLoading={isFrameLoading}
       />
 
       <EditorControls
@@ -417,6 +431,7 @@ type EditorCanvasProps = {
   onDownload: () => void;
   isDownloading: boolean;
   onNextFrame: () => void;
+  isFrameLoading: boolean;
 };
 
 function EditorCanvas({
@@ -438,6 +453,7 @@ function EditorCanvas({
   onDownload,
   isDownloading,
   onNextFrame,
+  isFrameLoading,
 }: EditorCanvasProps) {
   return (
     <div className="flex flex-col gap-6 rounded-3xl border border-white/30 bg-white/75 p-6 shadow-xl backdrop-blur">
@@ -467,7 +483,7 @@ function EditorCanvas({
             ref={fileInputRef}
             id="photo-upload-mobile"
             type="file"
-            accept="image/*"
+            accept="image/*, text/plain"
             className="hidden"
             onChange={onFileChange}
           />
@@ -492,8 +508,13 @@ function EditorCanvas({
         <button
           type="button"
           onClick={onNextFrame}
-          className="absolute -top-2 -right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition hover:bg-blue-500 hover:scale-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
-          title="Next Frame"
+          disabled={isFrameLoading}
+          className={`absolute -top-2 -right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full text-white shadow-lg transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 ${
+            isFrameLoading
+              ? "bg-blue-400 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-500 hover:scale-110"
+          }`}
+          title={isFrameLoading ? "Loading..." : "Next Frame"}
         >
           <svg
             width="16"
@@ -504,6 +525,7 @@ function EditorCanvas({
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className={isFrameLoading ? "animate-spin" : ""}
           >
             <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
             <path d="M21 3v5h-5" />
@@ -618,7 +640,7 @@ function EditorControls({
           ref={fileInputRef}
           id="photo-upload-desktop"
           type="file"
-          accept="image/*"
+          accept="image/*, text/plain"
           className="hidden"
           onChange={onFileChange}
         />
