@@ -334,8 +334,8 @@ export default function QRTicketPage() {
         {/* Header */}
         <div className="header-section">
           <div>
-            <h1 className="title-text google-blue">DevFest 2025</h1>
-            <p className="subtitle-text">Gujarat's Premier Developer Conference</p>
+            <h1 className="title-text google-blue">GDG Baroda: Devfest 2025</h1>
+            <p className="subtitle-text">Not just another tech conference</p>
           </div>
           <Image
             src="/DF25-Logo-Lockup.svg"
@@ -381,12 +381,12 @@ export default function QRTicketPage() {
             {/* Venue */}
             <div className="venue-card">
               <div className="venue-label">VENUE</div>
-              <div className="venue-value">📍 Baroda, Gujarat</div>
+              <div className="venue-value">📍 Sayaji Hotel Vadodara</div>
             </div>
 
             {/* Highlights */}
             <div className="highlights">
-              <div className="highlights-title">What You'll Experience</div>
+              <div className="highlights-title">What You&apos;ll Experience</div>
               <div className="highlights-grid">
                 <div className="highlight-item">
                   <span className="check-mark">🚀</span>
@@ -402,15 +402,7 @@ export default function QRTicketPage() {
                 </div>
                 <div className="highlight-item">
                   <span className="check-mark">🎁</span>
-                  Free Swag & Food
-                </div>
-                <div className="highlight-item">
-                  <span className="check-mark">🔥</span>
-                  Latest Tech Trends
-                </div>
-                <div className="highlight-item">
-                  <span className="check-mark">💼</span>
-                  Career Opportunities
+                  Swag & Food
                 </div>
               </div>
             </div>
