@@ -71,6 +71,10 @@ function FrameEditor() {
   const [currentFrameIndex, setCurrentFrameIndex] = useState(0);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isFrameLoading, setIsFrameLoading] = useState(false);
+  const [showShareOptions, setShowShareOptions] = useState(false);
+  const [generatedImageBlob, setGeneratedImageBlob] = useState<Blob | null>(
+    null
+  );
 
   const pointerState = useRef<{
     dragging: boolean;
@@ -157,26 +161,27 @@ function FrameEditor() {
 
   const handleZoomChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
+      if (showShareOptions) return;
       setLastAutoScale(null);
       updateScale(parseFloat(event.target.value));
     },
-    [updateScale]
+    [showShareOptions, updateScale]
   );
 
   const handleWheel = useCallback(
     (event: WheelEvent<HTMLDivElement>) => {
-      if (!imageSrc) return;
+      if (!imageSrc || showShareOptions) return;
       event.preventDefault();
       setLastAutoScale(null);
       const zoomFactor = event.deltaY > 0 ? 0.92 : 1.08;
       updateScale((prev) => prev * zoomFactor);
     },
-    [imageSrc, updateScale]
+    [imageSrc, showShareOptions, updateScale]
   );
 
   const handlePointerDown = useCallback(
     (event: PointerEvent<HTMLDivElement>) => {
-      if (!imageSrc) return;
+      if (!imageSrc || showShareOptions) return;
       event.preventDefault();
 
       pointerState.current = {
@@ -187,14 +192,15 @@ function FrameEditor() {
 
       event.currentTarget.setPointerCapture?.(event.pointerId);
     },
-    [imageSrc]
+    [imageSrc, showShareOptions]
   );
 
   const handlePointerMove = useCallback(
     (event: PointerEvent<HTMLDivElement>) => {
       if (
         !pointerState.current.dragging ||
-        pointerState.current.pointerId !== event.pointerId
+        pointerState.current.pointerId !== event.pointerId ||
+        showShareOptions
       )
         return;
       event.preventDefault();
@@ -207,7 +213,7 @@ function FrameEditor() {
       pointerState.current.last = { x: event.clientX, y: event.clientY };
       setLastAutoScale(null);
     },
-    []
+    [showShareOptions]
   );
 
   const endPointerInteraction = useCallback(
@@ -224,20 +230,31 @@ function FrameEditor() {
   );
 
   const handleFitClick = useCallback(() => {
-    if (!imageSrc) return;
+    if (!imageSrc || showShareOptions) return;
     applyScale("fit");
-  }, [imageSrc, applyScale]);
+  }, [imageSrc, showShareOptions, applyScale]);
 
   const handleFillClick = useCallback(() => {
-    if (!imageSrc) return;
+    if (!imageSrc || showShareOptions) return;
     applyScale("fill");
-  }, [imageSrc, applyScale]);
+  }, [imageSrc, showShareOptions, applyScale]);
 
   const handleResetClick = useCallback(() => {
-    if (!imageSrc) return;
+    if (!imageSrc || showShareOptions) return;
     setPosition({ x: 0, y: 0 });
     applyScale("fit");
-  }, [imageSrc, applyScale]);
+  }, [imageSrc, showShareOptions, applyScale]);
+
+  const handleClearImage = useCallback(() => {
+    setImageSrc(null);
+    setImageName("");
+    setImageSize(null);
+    setPosition({ x: 0, y: 0 });
+    setScale(1);
+    setLastAutoScale(null);
+    setShowShareOptions(false);
+    setGeneratedImageBlob(null);
+  }, []);
 
   const handleNextFrame = useCallback(async () => {
     if (isFrameLoading) return; // Prevent multiple clicks during loading
@@ -256,18 +273,14 @@ function FrameEditor() {
     }
   }, [currentFrameIndex, isFrameLoading]);
 
-  const downloadImage = useCallback(async () => {
+  const generateImageBlob = useCallback(async (): Promise<Blob | null> => {
     if (!imageSrc || !frameRef.current) {
-      alert("Please upload an image first.");
-      return;
+      return null;
     }
 
     if (currentFrameIndex < 0 || currentFrameIndex >= AVAILABLE_FRAMES.length) {
-      alert("Please select a frame before downloading.");
-      return;
+      return null;
     }
-
-    setIsDownloading(true);
 
     try {
       // Create a high-resolution canvas directly
@@ -344,33 +357,127 @@ function FrameEditor() {
         frameImg.src = AVAILABLE_FRAMES[currentFrameIndex];
       });
 
-      // Convert canvas to blob and download
-      canvas.toBlob(
-        (blob) => {
-          if (!blob) {
-            alert("Failed to generate image. Please try again.");
-            return;
-          }
-
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement("a");
-          a.href = url;
-          a.download = `devfest-2025-frame-${Date.now()}.jpg`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-        },
-        "image/jpeg",
-        0.95 // Higher quality
-      );
+      // Convert canvas to blob
+      return new Promise<Blob | null>((resolve) => {
+        canvas.toBlob(
+          (blob) => {
+            resolve(blob);
+          },
+          "image/jpeg",
+          0.95 // Higher quality
+        );
+      });
     } catch (error) {
-      console.error("Error downloading image:", error);
-      alert("Failed to download image. Please try again.");
+      console.error("Error generating image:", error);
+      return null;
+    }
+  }, [imageSrc, position, scale, currentFrameIndex]);
+
+  const handleConfirmClick = useCallback(async () => {
+    if (!imageSrc) {
+      alert("Please upload an image first.");
+      return;
+    }
+
+    setIsDownloading(true);
+
+    try {
+      const blob = await generateImageBlob();
+      if (!blob) {
+        alert("Failed to generate image. Please try again.");
+        return;
+      }
+
+      setGeneratedImageBlob(blob);
+      setShowShareOptions(true);
+    } catch (error) {
+      console.error("Error generating image:", error);
+      alert("Failed to generate image. Please try again.");
     } finally {
       setIsDownloading(false);
     }
-  }, [imageSrc, position, scale, currentFrameIndex]);
+  }, [imageSrc, generateImageBlob]);
+
+  const downloadImage = useCallback(() => {
+    if (!generatedImageBlob) {
+      alert("Please generate the image first.");
+      return;
+    }
+
+    const url = URL.createObjectURL(generatedImageBlob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `devfest-2025-frame-${Date.now()}.jpg`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, [generatedImageBlob]);
+
+  const generateSocialShareLinks = useCallback(() => {
+    const text =
+      "I'm attending DevFest 2025! 🚀 Join me for an amazing day of learning and networking. #DevFest2025 #GDGBaroda";
+    const hashtags =
+      "DevFest2025,GDGBaroda,GoogleDeveloperGroups,WebDev,AndroidDev,CloudComputing";
+
+    return {
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+        window.location.origin
+      )}&summary=${encodeURIComponent(text)}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        text
+      )}&hashtags=${encodeURIComponent(hashtags)}`,
+    };
+  }, []);
+
+  const shareToSocialMedia = useCallback(
+    async (platform: string) => {
+      if (!generatedImageBlob) {
+        alert("Please generate the image first.");
+        return;
+      }
+
+      const text =
+        "I'm attending DevFest 2025! 🚀 Join me for an amazing day of learning and networking. #DevFest2025 #GDGBaroda";
+
+      try {
+        // Create a temporary URL for the image
+        const imageUrl = URL.createObjectURL(generatedImageBlob);
+
+        if (navigator.share && navigator.canShare) {
+          try {
+            const file = new File([generatedImageBlob], "devfest-frame.jpg", {
+              type: "image/jpeg",
+            });
+            if (navigator.canShare({ files: [file] })) {
+              await navigator.share({
+                title: "DevFest 2025 Frame",
+                text: text,
+                files: [file],
+              });
+              return;
+            }
+          } catch {
+            console.log("Web Share API failed, falling back to URL sharing");
+          }
+        }
+
+        // Fallback to URL sharing
+        const socialLinks = generateSocialShareLinks();
+        window.open(
+          socialLinks[platform as keyof typeof socialLinks],
+          "_blank"
+        );
+
+        // Clean up the temporary URL after a delay
+        setTimeout(() => URL.revokeObjectURL(imageUrl), 10000);
+      } catch (error) {
+        console.error("Error sharing to social media:", error);
+        alert("Failed to share. Please try again.");
+      }
+    },
+    [generatedImageBlob, generateSocialShareLinks]
+  );
 
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-start">
@@ -390,10 +497,14 @@ function FrameEditor() {
         imageName={imageName}
         onFileChange={handleFileChange}
         currentFrameIndex={currentFrameIndex}
-        onDownload={downloadImage}
+        onConfirm={handleConfirmClick}
         isDownloading={isDownloading}
         onNextFrame={handleNextFrame}
         isFrameLoading={isFrameLoading}
+        onClearImage={handleClearImage}
+        showShareOptions={showShareOptions}
+        onDownload={downloadImage}
+        onShareToSocial={shareToSocialMedia}
       />
 
       <EditorControls
@@ -407,6 +518,12 @@ function FrameEditor() {
         onReset={handleResetClick}
         updateScale={updateScale}
         currentFrameIndex={currentFrameIndex}
+        onClearImage={handleClearImage}
+        showShareOptions={showShareOptions}
+        onConfirm={handleConfirmClick}
+        isDownloading={isDownloading}
+        onDownload={downloadImage}
+        onShareToSocial={shareToSocialMedia}
       />
     </section>
   );
@@ -428,10 +545,14 @@ type EditorCanvasProps = {
   imageName: string;
   onFileChange: (event: ChangeEvent<HTMLInputElement>) => void;
   currentFrameIndex: number;
-  onDownload: () => void;
+  onConfirm: () => void;
   isDownloading: boolean;
   onNextFrame: () => void;
   isFrameLoading: boolean;
+  onClearImage: () => void;
+  showShareOptions: boolean;
+  onDownload: () => void;
+  onShareToSocial: (platform: string) => void;
 };
 
 function EditorCanvas({
@@ -450,10 +571,14 @@ function EditorCanvas({
   imageName,
   onFileChange,
   currentFrameIndex,
-  onDownload,
+  onConfirm,
   isDownloading,
   onNextFrame,
   isFrameLoading,
+  onClearImage,
+  showShareOptions,
+  onDownload,
+  onShareToSocial,
 }: EditorCanvasProps) {
   return (
     <div className="flex flex-col gap-6 rounded-3xl border border-white/30 bg-white/75 p-6 shadow-xl backdrop-blur">
@@ -490,16 +615,18 @@ function EditorCanvas({
         </div>
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-slate-900">Preview</h2>
-          {imageSrc && (
-            <button
-              type="button"
-              onClick={onDownload}
-              disabled={isDownloading}
-              className="rounded-full bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {isDownloading ? "Downloading..." : "Download"}
-            </button>
-          )}
+          <div className="flex items-center gap-2">
+            {imageSrc && (
+              <button
+                type="button"
+                onClick={onClearImage}
+                className="rounded-full bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
+                title="Clear image"
+              >
+                Clear
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
@@ -543,7 +670,9 @@ function EditorCanvas({
           onPointerUp={onPointerUp}
           onPointerLeave={onPointerLeave}
           onPointerCancel={onPointerCancel}
-          style={{ touchAction: imageSrc ? "none" : "auto" }}
+          style={{
+            touchAction: imageSrc && !showShareOptions ? "none" : "auto",
+          }}
         >
           {imageSrc ? (
             <img
@@ -573,6 +702,20 @@ function EditorCanvas({
           />
         </div>
       </div>
+
+      {/* Confirm Button - Mobile Only */}
+      {imageSrc && !showShareOptions && (
+        <div className="mt-6 lg:hidden">
+          <button
+            type="button"
+            onClick={onConfirm}
+            disabled={isDownloading}
+            className="w-full rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isDownloading ? "Generating..." : "Generate & Share"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -588,6 +731,12 @@ type EditorControlsProps = {
   onReset: () => void;
   updateScale: (value: number | ((previous: number) => number)) => void;
   currentFrameIndex: number;
+  onClearImage: () => void;
+  showShareOptions: boolean;
+  onConfirm: () => void;
+  isDownloading: boolean;
+  onDownload: () => void;
+  onShareToSocial: (platform: string) => void;
 };
 
 function EditorControls({
@@ -601,6 +750,12 @@ function EditorControls({
   onReset,
   updateScale,
   currentFrameIndex,
+  onClearImage,
+  showShareOptions,
+  onConfirm,
+  isDownloading,
+  onDownload,
+  onShareToSocial,
 }: EditorControlsProps) {
   const buttonClass =
     "flex-1 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-px hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50";
@@ -660,7 +815,7 @@ function EditorControls({
             type="button"
             className={zoomButtonClass}
             onClick={handleZoomOut}
-            disabled={!imageSrc || scale <= MIN_ZOOM}
+            disabled={!imageSrc || scale <= MIN_ZOOM || showShareOptions}
             title="Zoom out"
           >
             −
@@ -672,14 +827,14 @@ function EditorControls({
             step="0.01"
             value={scale}
             onChange={onZoomChange}
-            disabled={!imageSrc}
+            disabled={!imageSrc || showShareOptions}
             className="flex-1 accent-blue-600"
           />
           <button
             type="button"
             className={zoomButtonClass}
             onClick={handleZoomIn}
-            disabled={!imageSrc || scale >= MAX_ZOOM}
+            disabled={!imageSrc || scale >= MAX_ZOOM || showShareOptions}
             title="Zoom in"
           >
             +
@@ -706,7 +861,7 @@ function EditorControls({
           type="button"
           className={buttonClass}
           onClick={onFit}
-          disabled={!imageSrc}
+          disabled={!imageSrc || showShareOptions}
         >
           Fit
         </button>
@@ -714,7 +869,7 @@ function EditorControls({
           type="button"
           className={buttonClass}
           onClick={onFill}
-          disabled={!imageSrc}
+          disabled={!imageSrc || showShareOptions}
         >
           Fill
         </button>
@@ -722,11 +877,71 @@ function EditorControls({
           type="button"
           className={buttonClass}
           onClick={onReset}
-          disabled={!imageSrc}
+          disabled={!imageSrc || showShareOptions}
         >
           Reset
         </button>
       </div>
+
+      {/* Generate Button - Desktop */}
+      {imageSrc && !showShareOptions && (
+        <div className="flex flex-col gap-3">
+          <button
+            type="button"
+            onClick={onConfirm}
+            disabled={isDownloading}
+            className="w-full rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {isDownloading ? "Generating..." : "Generate & Share"}
+          </button>
+        </div>
+      )}
+
+      {/* Social Media Sharing Section - Desktop */}
+      {imageSrc && showShareOptions && (
+        <div className="flex flex-col gap-3">
+          <h3 className="text-sm font-semibold text-slate-700">
+            Share on Social Media
+          </h3>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => onShareToSocial("linkedin")}
+              className="flex items-center justify-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-500 hover:-translate-y-px"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              LinkedIn
+            </button>
+            <button
+              onClick={() => onShareToSocial("twitter")}
+              className="flex items-center justify-center gap-2 rounded-full bg-black px-3 py-2 text-xs font-medium text-white transition hover:bg-gray-800 hover:-translate-y-px"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+              </svg>
+              X
+            </button>
+          </div>
+          <button
+            type="button"
+            onClick={onDownload}
+            className="w-full rounded-full bg-green-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-px hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+          >
+            Download Image
+          </button>
+        </div>
+      )}
     </aside>
   );
 }
