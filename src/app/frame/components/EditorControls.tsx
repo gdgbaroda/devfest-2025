@@ -4,6 +4,7 @@ import { AVAILABLE_FRAMES, MAX_ZOOM, MIN_ZOOM } from "../constants";
 import { ShareButton } from "@/components/Buttons/ShareButton";
 import { DownloadButton } from "@/components/Buttons/DownloadButton";
 import { UploadButton } from "@/components/Buttons/UploadButton";
+import { LinkedInShareButton } from "@/components/Buttons/LinkedInShareButton";
 
 export type EditorControlsProps = {
   fileInputRef: RefObject<HTMLInputElement>;
@@ -21,6 +22,8 @@ export type EditorControlsProps = {
   isDownloading: boolean;
   onDownload: () => void;
   onShare: () => void;
+  onLinkedInShare?: () => void;
+  isUploadingToR2?: boolean;
 };
 
 export const EditorControls = ({
@@ -39,6 +42,8 @@ export const EditorControls = ({
   isDownloading,
   onDownload,
   onShare,
+  onLinkedInShare,
+  isUploadingToR2 = false,
 }: EditorControlsProps) => {
   const buttonClass =
     "flex-1 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-px hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 disabled:cursor-not-allowed disabled:opacity-50";
@@ -179,9 +184,17 @@ export const EditorControls = ({
       )}
 
       {imageSrc && showShareOptions && (
-        <div className="hidden flex-col lg:flex lg:flex-row lg:gap-3">
-          <ShareButton onShare={onShare} />
-          <DownloadButton onDownload={onDownload} />
+        <div className="hidden flex-col gap-3 lg:flex">
+          {onLinkedInShare && (
+            <LinkedInShareButton
+              onShare={onLinkedInShare}
+              isUploading={isUploadingToR2}
+            />
+          )}
+          <div className="flex flex-row gap-3">
+            <ShareButton onShare={onShare} />
+            <DownloadButton onDownload={onDownload} />
+          </div>
         </div>
       )}
     </aside>
