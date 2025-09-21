@@ -3,20 +3,16 @@
   "main": ".open-next/worker.js",
   "compatibility_date": "2024-09-23",
   "compatibility_flags": ["nodejs_compat"],
-
+  "account_id": "",
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-
   "routes": [
     {
-      "pattern": "devfest.gdgbaroda.com/*",
-      "zone_name": "gdgbaroda.com"
-    },
-    {
-      "pattern": "devfest2025.gdgbaroda.com/*",
-      "zone_name": "gdgbaroda.com"
+      "pattern" : "devfest.gdgbaroda.com",
+      "custom_domain": true
     }
-  ]
+  ],
+  "workers_dev": true
 }
