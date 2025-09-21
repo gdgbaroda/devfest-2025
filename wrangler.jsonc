@@ -2,7 +2,10 @@
   "name": "devfest-2025",
   "main": ".open-next/worker.js",
   "compatibility_date": "2025-01-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
   "account_id": "7cc5fc82fb0bc4acc0f2e0899f462c68",
   "assets": {
     "directory": ".open-next/assets",
