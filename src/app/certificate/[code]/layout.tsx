@@ -1,9 +1,6 @@
 import { Metadata } from 'next';
 import { ATTENDEES_DATA } from '@/lib/attendees';
 
-// Edge Runtime configuration for Cloudflare Pages
-export const runtime = 'edge';
-
 interface Props {
   params: Promise<{
     code: string;
