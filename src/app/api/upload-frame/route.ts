@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-export const runtime = 'edge';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 
 interface CloudflareEnv {
   DEVFEST_ASSETS: R2Bucket;
@@ -32,9 +31,9 @@ export async function POST(request: NextRequest) {
     const extension = file.type === 'image/jpeg' ? 'jpg' : 'png';
     const filename = `frames/devfest-2025-frame-${timestamp}-${randomId}.${extension}`;
 
-    // Get R2 bucket from Cloudflare environment
-    const env = process.env as unknown as CloudflareEnv;
-    const bucket = env.DEVFEST_ASSETS;
+    // Get R2 bucket from Cloudflare environment using OpenNext.js
+    const { env } = getCloudflareContext();
+    const bucket = (env as CloudflareEnv).DEVFEST_ASSETS;
 
     if (!bucket) {
       return NextResponse.json(
