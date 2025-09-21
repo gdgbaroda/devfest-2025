@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 import path from "path";
 
 const nextConfig: NextConfig = {
@@ -25,12 +24,8 @@ const nextConfig: NextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  // OpenNext.js compatibility
+  output: 'standalone',
 };
-
-if (process.env.NODE_ENV === "development") {
-  (async () => {
-    await setupDevPlatform();
-  })();
-}
 
 export default nextConfig;
