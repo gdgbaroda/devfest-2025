@@ -12,6 +12,7 @@ import { ShareButton } from "@/components/Buttons/ShareButton";
 import { DownloadButton } from "@/components/Buttons/DownloadButton";
 import { UploadButton } from "@/components/Buttons/UploadButton";
 import { ClearButton } from "@/components/Buttons/ClearButton";
+import { LinkedInShareButton } from "@/components/Buttons/LinkedInShareButton";
 
 export type EditorCanvasProps = {
   frameRef: RefObject<HTMLDivElement>;
@@ -37,6 +38,8 @@ export type EditorCanvasProps = {
   showShareOptions: boolean;
   onDownload: () => void;
   onShare: () => void;
+  onLinkedInShare?: () => void;
+  isUploadingToR2?: boolean;
 };
 
 export const EditorCanvas = ({
@@ -63,6 +66,8 @@ export const EditorCanvas = ({
   showShareOptions,
   onDownload,
   onShare,
+  onLinkedInShare,
+  isUploadingToR2 = false,
 }: EditorCanvasProps) => {
   return (
     <div className="flex flex-col gap-6 rounded-3xl border border-white/30 bg-white/75 p-6 shadow-xl backdrop-blur">
@@ -190,6 +195,12 @@ export const EditorCanvas = ({
             </>
           ) : (
             <>
+              {onLinkedInShare && (
+                <LinkedInShareButton
+                  onShare={onLinkedInShare}
+                  isUploading={isUploadingToR2}
+                />
+              )}
               <ShareButton onShare={onShare} />
               <DownloadButton onDownload={onDownload} />
             </>

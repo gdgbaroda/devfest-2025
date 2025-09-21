@@ -8,6 +8,12 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
+  "r2_buckets": [
+    {
+      "binding": "DEVFEST_ASSETS",
+      "bucket_name": "devfest-assets"
+    }
+  ],
   "routes": [
     {
       "pattern" : "devfest.gdgbaroda.com",

@@ -13,7 +13,7 @@ import { AVAILABLE_FRAMES, MAX_ZOOM, MIN_ZOOM } from "../constants";
 import { FitMode, ImageSize, Point } from "../types";
 import { clamp } from "../utils/clamp";
 import { createFrameComposite } from "../utils/canvas";
-import { getShareText } from "../utils/share";
+import { getShareText, uploadFrameToR2, shareToLinkedIn } from "../utils/share";
 import { EditorCanvas } from "./EditorCanvas";
 import { EditorControls } from "./EditorControls";
 
@@ -40,6 +40,7 @@ export const FrameEditor = () => {
   const [generatedImageBlob, setGeneratedImageBlob] = useState<Blob | null>(
     null
   );
+  const [isUploadingToR2, setIsUploadingToR2] = useState(false);
 
   const pointerState = useRef<PointerState>({
     dragging: false,
@@ -333,6 +334,31 @@ export const FrameEditor = () => {
     alert("Sharing isn't supported here, so the image was downloaded instead.");
   }, [generatedImageBlob, downloadImage]);
 
+  const shareToLinkedInWithUpload = useCallback(async () => {
+    if (!generatedImageBlob) {
+      alert("Please generate the image first.");
+      return;
+    }
+
+    setIsUploadingToR2(true);
+
+    try {
+      const imageUrl = await uploadFrameToR2(generatedImageBlob);
+
+      if (!imageUrl) {
+        alert("Failed to upload image. Please try again or download instead.");
+        return;
+      }
+
+      shareToLinkedIn(imageUrl);
+    } catch (error) {
+      console.error("Error uploading to R2 for LinkedIn sharing:", error);
+      alert("Failed to upload image for sharing. Please try again or download instead.");
+    } finally {
+      setIsUploadingToR2(false);
+    }
+  }, [generatedImageBlob]);
+
   return (
     <section className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-start">
       <EditorCanvas
@@ -359,6 +385,8 @@ export const FrameEditor = () => {
         showShareOptions={showShareOptions}
         onDownload={downloadImage}
         onShare={shareGeneratedImage}
+        onLinkedInShare={shareToLinkedInWithUpload}
+        isUploadingToR2={isUploadingToR2}
       />
 
       <EditorControls
@@ -377,6 +405,8 @@ export const FrameEditor = () => {
         isDownloading={isDownloading}
         onDownload={downloadImage}
         onShare={shareGeneratedImage}
+        onLinkedInShare={shareToLinkedInWithUpload}
+        isUploadingToR2={isUploadingToR2}
       />
     </section>
   );
