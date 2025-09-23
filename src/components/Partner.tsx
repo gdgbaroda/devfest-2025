@@ -9,7 +9,6 @@ export default function Partner() {
         event. We are thankful for their collaboration and commitment.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 place-items-center">
-        {/* <PartnerFrame name={"JetBrains"} logo={"/logo/jetbrains.svg"} /> */}
         <PartnerFrame name={"Appmattic"} logo={"/logo/Appmattic.svg"} />
         <PartnerFrame name={"Atliq"} logo={"/logo/Atliq.svg"} />
         <PartnerFrame name={"Atyantik"} logo={"/logo/Atyantik.svg"} />
@@ -22,6 +21,11 @@ export default function Partner() {
         <PartnerFrame name={"Pict-O-Preserve"} logo={"/logo/picto.svg"} />
         <PartnerFrame name={"SunflowerLabs"} logo={"/logo/SunflowerLabs.svg"} />
         <PartnerFrame name={"Anormaly"} logo={"/logo/Anormaly.svg"} />
+        <PartnerFrame
+          name={"Geekconnects Technologies (OPC) PVT LTD"}
+          logo={"/logo/Geekconnects.png"}
+        />
+        <PartnerFrame name={"GDG On Campus"} logo={"/logo/GDG_ITM.png"} />
       </div>
     </div>
   );
