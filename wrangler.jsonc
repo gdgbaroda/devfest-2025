@@ -1,7 +1,8 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "devfest-2025",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2025-01-01",
+  "compatibility_date": "2025-03-01",
   "compatibility_flags": [
     "nodejs_compat",
     "global_fetch_strictly_public"
