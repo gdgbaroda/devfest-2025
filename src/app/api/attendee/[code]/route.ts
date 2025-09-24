@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ATTENDEES_DATA } from "@/lib/attendees";
+import { getAttendeeByCode } from "@/lib/attendees";
 
 export async function GET(
   request: NextRequest,
@@ -21,14 +21,20 @@ export async function GET(
     }
 
     // Find the attendee with matching QR code
-    const attendee = ATTENDEES_DATA.find((a) => a.qrCode === code);
+    const attendee = getAttendeeByCode(code);
 
-    if (attendee) {
+    if (attendee?.checkedIn) {
       return NextResponse.json(attendee);
     }
 
     // If no attendee found
-    return NextResponse.json({ error: "Attendee not found" }, { status: 404 });
+    return NextResponse.json(
+      {
+        error:
+          "Certificate not found. You may not have attended the workshop. If you believe this is a mistake, contact work@ayushmakwana.com.",
+      },
+      { status: 404 }
+    );
   } catch (error) {
     console.error("Error fetching attendee data:", error);
     return NextResponse.json(
