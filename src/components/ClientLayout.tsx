@@ -7,10 +7,6 @@ const Background = dynamic(() => import("@/components/Background"), {
   ssr: false,
 });
 
-const SmoothScroll = dynamic(() => import("@/components/SmoothScroll"), {
-  ssr: false,
-});
-
 export default function ClientLayout({
   children,
 }: {
@@ -21,7 +17,6 @@ export default function ClientLayout({
 
   return (
     <>
-      <SmoothScroll />
       <Background deferUntilIdle={Boolean(deferBackground)} />
       <div className="flex-1 flex flex-col">{children}</div>
     </>
