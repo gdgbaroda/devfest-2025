@@ -3,7 +3,7 @@ import Image from "next/image";
 const organizers = [
   {
     name: "Dron Trivedi",
-    image: "/team/organizers/dron_trivedi.png",
+    image: "/team/organizers/dron_trivedi.jpg",
   },
   {
     name: "Jigish Dalal",
@@ -15,50 +15,50 @@ const organizers = [
   },
   {
     name: "Hardip Patel",
-    image: "/team/organizers/hardip_patel.png",
+    image: "/team/organizers/hardip_patel.jpg",
   },
   {
     name: "Kushal Dave",
-    image: "/team/organizers/kushal_dave.png",
+    image: "/team/organizers/kushal_dave.jpg",
   },
   {
     name: "Rahul Banker",
-    image: "/team/organizers/rahul_banker.png",
+    image: "/team/organizers/rahul_banker.jpg",
   },
 ];
 
 const volunteers = [
   {
     name: "Ashutosh Bhagat",
-    image: "/team/volunteers/Ashutosh_Bhagat.png",
+    image: "/team/volunteers/Ashutosh_Bhagat.jpg",
   },
   {
     name: "Ayush Makwana",
-    image: "/team/volunteers/Ayush_Makwana.png",
+    image: "/team/volunteers/Ayush_Makwana.jpg",
   },
   {
     name: "Chirag Savsani",
-    image: "/team/volunteers/Chirag_Savsani.png",
+    image: "/team/volunteers/Chirag_Savsani.jpg",
   },
   {
     name: "Devansh Rajan",
-    image: "/team/volunteers/Devansh_Rajan.png",
+    image: "/team/volunteers/Devansh_Rajan.jpg",
   },
   {
     name: "Naiteek Chokshi",
-    image: "/team/volunteers/Naiteek_Chokshi.png",
+    image: "/team/volunteers/Naiteek_Chokshi.jpg",
   },
   {
     name: "Rutunj Parikh",
-    image: "/team/volunteers/Rutunj_Parikh.png",
+    image: "/team/volunteers/rutunj.jpg",
   },
   {
     name: "Shivansh Darji",
-    image: "/team/volunteers/Shivansh_Darji.png",
+    image: "/team/volunteers/Shivansh_Darji.jpg",
   },
   {
     name: "Yuvraj Ahuja",
-    image: "/team/volunteers/Yuvraj_Ahuja.png",
+    image: "/team/volunteers/Yuvraj_Ahuja.jpg",
   },
 ];
 

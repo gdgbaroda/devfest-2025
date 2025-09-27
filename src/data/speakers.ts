@@ -28,7 +28,7 @@ const speakersData: Speaker[] = [
     name: "Tarun Jain",
     role: "Super Agent",
     company: "AI Planet",
-    img: "/speakers/tarun-r-jain.png",
+    img: "/speakers/tarun-r-jain.jpg",
   },
   {
     name: "Prajyot Mainkar",
@@ -40,7 +40,7 @@ const speakersData: Speaker[] = [
     name: "Amey Nerkar",
     role: "GDE for Payments",
     company: "",
-    img: "/speakers/amey-nerkar.png",
+    img: "/speakers/amey-nerkar.jpg",
   },
   {
     name: "Geeta Kakrani",
