@@ -42,6 +42,18 @@ const speakersData: Speaker[] = [
     company: "",
     img: "/speakers/amey-nerkar.png",
   },
+  {
+    name: "Geeta Kakrani",
+    role: "AI consultantm, GDE",
+    company: "",
+    img: "/speakers/geeta-kakrani.jpg",
+  },
+  {
+    name: "Bhavesh Bhatt",
+    role: "AVP Generative AI and YouTuber",
+    company: "IDFC First Bank",
+    img: "/speakers/bhavesh-bhatt.jpg",
+  },
 ];
 
 export default speakersData;
