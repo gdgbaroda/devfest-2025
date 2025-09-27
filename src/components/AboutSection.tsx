@@ -45,6 +45,10 @@ const volunteers = [
     image: "/team/volunteers/Devansh_Rajan.jpg",
   },
   {
+    name: "Harsh Mehta",
+    image: "/team/volunteers/Harsh_Mehta.jpg",
+  },
+  {
     name: "Naiteek Chokshi",
     image: "/team/volunteers/Naiteek_Chokshi.jpg",
   },
@@ -55,6 +59,10 @@ const volunteers = [
   {
     name: "Shivansh Darji",
     image: "/team/volunteers/Shivansh_Darji.jpg",
+  },
+  {
+    name: "Swapnil Trivedi",
+    image: "/team/volunteers/Swapnil_Trivedi.jpg",
   },
   {
     name: "Yuvraj Ahuja",
