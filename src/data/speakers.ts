@@ -20,7 +20,7 @@ const speakersData: Speaker[] = [
   },
   {
     name: "Srushti Raybhoge",
-    role: "Software Engineer",
+    role: "Software Engineer 2",
     company: "Addepar",
     img: "/speakers/srushti-raybhoge.jpg",
   },
@@ -38,21 +38,27 @@ const speakersData: Speaker[] = [
   },
   {
     name: "Amey Nerkar",
-    role: "GDE for Payments",
-    company: "",
-    img: "/speakers/amey-nerkar.jpg",
+    role: "GDE in Payments",
+    company: "Senior Product Manager",
+    img: "/speakers/amey-nerkar.png",
   },
   {
     name: "Geeta Kakrani",
-    role: "AI consultantm, GDE",
-    company: "",
+    role: "AI Consultant",
+    company: "CEO of Kanishka IT",
     img: "/speakers/geeta-kakrani.jpg",
   },
   {
     name: "Bhavesh Bhatt",
-    role: "AVP Generative AI and YouTuber",
+    role: "AVP Generative AI",
     company: "IDFC First Bank",
     img: "/speakers/bhavesh-bhatt.jpg",
+  },
+  {
+    name: "Shreyan Mehta",
+    role: "Founder",
+    company: "Asambhav Solutions",
+    img: "/speakers/shreyan-mehta.jpg",
   },
 ];
 
