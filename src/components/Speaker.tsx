@@ -24,7 +24,9 @@ export default function SpeakersList() {
           />
         ))}
       </div>
-      <Callout title="Stay tuned for more speaker announcements!" />
+      <div className="hidden">
+        <Callout title="Stay tuned for more speaker announcements!" />
+      </div>
     </div>
   );
 }
