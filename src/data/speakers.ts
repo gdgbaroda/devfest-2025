@@ -40,7 +40,7 @@ const speakersData: Speaker[] = [
     name: "Amey Nerkar",
     role: "GDE in Payments",
     company: "Senior Product Manager",
-    img: "/speakers/amey-nerkar.png",
+    img: "/speakers/amey-nerkar.jpg",
   },
   {
     name: "Geeta Kakrani",
