@@ -49,6 +49,10 @@ const volunteers = [
     image: "/team/volunteers/Harsh_Mehta.jpg",
   },
   {
+    name: "Divya Vachi",
+    image: "/team/volunteers/Divya-Vachi.jpeg",
+  },
+  {
     name: "Naiteek Chokshi",
     image: "/team/volunteers/Naiteek_Chokshi.jpg",
   },
