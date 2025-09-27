@@ -6,16 +6,16 @@ const organizers = [
     image: "/team/organizers/dron_trivedi.jpg",
   },
   {
-    name: "Jigish Dalal",
-    image: "/team/organizers/jigish.jpeg",
-  },
-  {
     name: "Hardik Mistry",
     image: "/team/organizers/hardikmistry.jpeg",
   },
   {
     name: "Hardip Patel",
     image: "/team/organizers/hardip_patel.jpg",
+  },
+  {
+    name: "Jigish Dalal",
+    image: "/team/organizers/jigish.jpeg",
   },
   {
     name: "Kushal Dave",
@@ -45,12 +45,12 @@ const volunteers = [
     image: "/team/volunteers/Devansh_Rajan.jpg",
   },
   {
-    name: "Harsh Mehta",
-    image: "/team/volunteers/Harsh_Mehta.jpg",
-  },
-  {
     name: "Divya Vachi",
     image: "/team/volunteers/Divya-Vachi.jpeg",
+  },
+  {
+    name: "Harsh Mehta",
+    image: "/team/volunteers/Harsh_Mehta.jpg",
   },
   {
     name: "Naiteek Chokshi",
