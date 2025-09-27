@@ -95,7 +95,7 @@ export default function AudienceSection() {
       id="audience"
       className="mx-auto mt-24 w-full px-4 md:px-8 lg:px-16 xl:px-32"
     >
-      <div className="rounded-[36px] border border-slate-200 bg-white/95 p-10 md:p-14 shadow-xl">
+      <div className="rounded-[36px] border border-slate-200 bg-white/95 py-10 px-6 md:p-14 shadow-xl">
         {/* Header */}
         <div className="mb-12 text-center">
           <p className="text-md font-semibold uppercase tracking-[0.35em] text-slate-500">
