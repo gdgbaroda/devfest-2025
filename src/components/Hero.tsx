@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col min-h-screen w-full justify-center items-center px-0 md:px-8 lg:px-16">
+    <div className="flex flex-col min-h-screen w-full justify-center items-center px-4 md:px-8 lg:px-16">
       <div className="relative w-full max-w-[450px] lg:max-w-[600px] xl:max-w-[700px] aspect-video">
         <div className="absolute inset-0 rounded-2xl overflow-hidden">
           <Image
