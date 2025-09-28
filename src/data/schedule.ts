@@ -83,7 +83,7 @@ const scheduleData: ScheduleDay[] = [
             speakerTitle: "Super Agent at AI Planet, GDE in AI",
             time: "2:30 PM - 4:30 PM",
             level: "Started",
-            description: "AI Agents are getting better, but most lack memory persistence. Learn to build Agents with persistent memory, enable Agents to learn from user interactions, create personalized experiences with long-term memory, and use Gemini and Mem0ai to build memory-aware LLM applications."
+            description: "AI Agents are improving, but most lack persistent memory. Learn to build Agents with persistent memory, enable Agents to learn from user interactions, create personalized experiences with long-term memory, and use Gemini and Mem0ai to build memory-aware Agentic workflows using Agno. We will further trace the memory conversation metadata using OPIK."
           }
         ]
       }
