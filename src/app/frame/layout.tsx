@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Frame Studio | DevFest 2025",
@@ -7,5 +9,11 @@ export const metadata = {
 };
 
 export default function FrameLayout({ children }: { children: ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Navbar />
+      {children}
+      <Footer />
+    </>
+  );
 }

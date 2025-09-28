@@ -39,6 +39,7 @@ export default function Navbar() {
     { name: "Speakers", href: "/speakers" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Partners", href: "/partners" },
+    { name: "Frame", href: "/frame", hasDot: true },
     { name: "About", href: "/about" },
   ];
 
@@ -94,14 +95,17 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <div
                     key={item.name}
-                    className={`cursor-pointer px-4 py-2 text-lg rounded-md transition-all duration-300 ${
+                    className={`relative cursor-pointer px-4 py-2 text-lg rounded-md transition-all duration-300 flex items-center justify-center ${
                       isActive(item.href)
                         ? "font-bold bg-white/30 shadow-md text-gray-900"
                         : "text-gray-700 hover:bg-white/10 hover:text-gray-900"
                     }`}
                     onClick={() => handleNavigation(item.href)}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
+                    {item.hasDot ? (
+                      <span className="shiny-dot" aria-hidden="true" />
+                    ) : null}
                   </div>
                 ))}
               </div>
@@ -114,7 +118,7 @@ export default function Navbar() {
           {navigation.map((item) => (
             <div
               key={item.name}
-              className={`cursor-pointer transition-colors
+              className={`relative cursor-pointer transition-colors flex items-center
                             ${
                               isActive(item.href)
                                 ? "font-bold text-gray-900 border-b-2 border-gray-900"
@@ -122,11 +126,63 @@ export default function Navbar() {
                             }`}
               onClick={() => handleNavigation(item.href)}
             >
-              {item.name}
+              <span>{item.name}</span>
+              {item.hasDot ? (
+                <span className="shiny-dot" aria-hidden="true" />
+              ) : null}
             </div>
           ))}
         </div>
       </div>
+      <style jsx>{styles}</style>
     </div>
   );
 }
+
+const styles = `
+  .shiny-dot {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.35rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: #2563eb;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
+    animation: dot-pulse 1.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .shiny-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(37, 99, 235, 0.6);
+    animation: dot-ripple 1.8s ease-in-out infinite;
+  }
+
+  @keyframes dot-pulse {
+    0%, 100% {
+      transform: scale(0.9);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes dot-ripple {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    70% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+`;
