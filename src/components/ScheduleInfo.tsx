@@ -85,17 +85,19 @@ export default function ScheduleInfo() {
                             <h3 className="text-gray-900 text-base sm:text-lg md:text-xl font-bold text-left break-words">
                               {item.title}
                             </h3>
-                            {item.level && (
-                              <span
-                                className={`
+                            <div className="hidden">
+                              {item.level && (
+                                  <span
+                                      className={`
                                   inline-block self-start sm:self-auto px-2 sm:px-3 py-0.5 sm:py-1
                                   text-[10px] sm:text-xs font-medium rounded-full border whitespace-nowrap
                                   ${getLevelBadgeColor(item.level)}
                                 `}
-                              >
+                                  >
                                 {item.level}
                               </span>
-                            )}
+                              )}
+                            </div>
                           </div>
 
                           {/* Speaker */}
