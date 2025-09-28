@@ -26,6 +26,7 @@ export default function Partner() {
           logo={"/logo/Geekconnects.png"}
         />
         <PartnerFrame name={"GDG On Campus"} logo={"/logo/GDG_ITM.png"} />
+        <PartnerFrame name={"GDG On Campus"} logo={"/logo/GDG_SVIT.png"} />
       </div>
     </div>
   );
