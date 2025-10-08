@@ -25,9 +25,9 @@ export default async function CertificatePage({
           </div>
           <a
             className="font-semibold text-blue-600"
-            href="mailto:work@ayushmakwana.com"
+            href="mailto:gdgbaroda@gmail.com"
           >
-            work@ayushmakwana.com
+            gdgbaroda@gmail.com
           </a>
           .
         </div>

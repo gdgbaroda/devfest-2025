@@ -205,9 +205,9 @@ export function CertificateDetailClient({
             If you believe this is a mistake, contact{" "}
             <a
               className="font-semibold text-blue-600"
-              href="mailto:work@ayushmakwana.com"
+              href="mailto:gdgbaroda@gmail.com"
             >
-              work@ayushmakwana.com
+              gdgbaroda@gmail.com
             </a>
           </p>
         </div>
