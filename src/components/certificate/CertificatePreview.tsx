@@ -98,7 +98,7 @@ export function CertificatePreview({
             <div className="flex flex-col items-center gap-3 text-center text-sm text-slate-500">
               <div className="relative h-12 w-32">
                 <Image
-                  src="/team/sign/rahul_sign.svg"
+                  src="/team/sign/rahul_sign.png"
                   alt="Authorized Signatory"
                   fill
                   quality={100}
