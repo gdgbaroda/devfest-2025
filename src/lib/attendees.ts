@@ -1,10 +1,7 @@
-import rawTicketsJson from '../../data/tickets.json';
+import rawTicketsJson from "../../data/tickets.json";
 
 export interface AttendeeData {
   name: string;
-  email: string;
-  firstName: string;
-  lastName: string;
   ticketType: string;
   ticketNo: string;
   qrCode: string;
@@ -12,61 +9,52 @@ export interface AttendeeData {
 }
 
 type RawTicketRecord = Partial<{
-  name: unknown;
-  email: unknown;
-  first_name: unknown;
-  last_name: unknown;
-  ticket_type: unknown;
-  ticket_no: unknown;
-  barcode_no: unknown;
-  checked_in: unknown;
+  name: string;
+  ticket_type: string;
+  ticket_no: string;
+  barcode_no: string;
+  checked_in: string;
 }>;
 
-interface AttendeeStore {
-  list: AttendeeData[];
-  byCode: Map<string, AttendeeData>;
-}
-
 function toTrimmedString(value: unknown): string {
-  return typeof value === 'string' ? value.trim() : '';
+  return typeof value === "string" ? value.trim() : "";
 }
 
 function normaliseCode(value: string): string {
   return value.trim().toUpperCase();
 }
 
-function createAttendeeStore(records: RawTicketRecord[]): AttendeeStore {
+function createAttendeeStore(records: RawTicketRecord[]) {
   const attendees = records.reduce<AttendeeData[]>((acc, raw) => {
     const record = raw as RawTicketRecord;
-    const code = normaliseCode(toTrimmedString(record.barcode_no ?? record.ticket_no));
+    const code = normaliseCode(
+      toTrimmedString(record.barcode_no ?? record.ticket_no)
+    );
     if (!code) {
       return acc;
     }
 
-    const firstName = toTrimmedString(record.first_name);
-    const lastName = toTrimmedString(record.last_name);
-    const fullName = toTrimmedString(record.name) || `${firstName} ${lastName}`.trim();
-
     acc.push({
-      name: fullName || code,
-      email: toTrimmedString(record.email),
-      firstName,
-      lastName,
+      name: toTrimmedString(record.name),
       ticketType: toTrimmedString(record.ticket_type),
-      ticketNo: toTrimmedString(record.ticket_no) || code,
+      ticketNo: toTrimmedString(record.ticket_no),
       qrCode: code,
       checkedIn: toTrimmedString(record.checked_in),
     });
 
     return acc;
-  }, []);
+  }, []) as AttendeeData[];
 
-  const byCode = new Map(attendees.map((attendee) => [attendee.qrCode, attendee]));
+  const byCode = new Map(
+    attendees.map((attendee) => [attendee.qrCode, attendee])
+  );
 
-  return { list: attendees, byCode };
+  return { list: attendees, byCode } as const;
 }
 
-const rawTickets = Array.isArray(rawTicketsJson) ? (rawTicketsJson as RawTicketRecord[]) : [];
+const rawTickets = Array.isArray(rawTicketsJson)
+  ? (rawTicketsJson as RawTicketRecord[])
+  : [];
 const attendeesStore = createAttendeeStore(rawTickets);
 
 export const ATTENDEES_DATA: AttendeeData[] = attendeesStore.list;

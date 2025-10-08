@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { AttendeeData } from "@/lib/attendees";
@@ -176,9 +175,7 @@ export function CertificateDetailClient({
         return;
       }
 
-      pdf.save(
-        `DevFest-2025-Certificate-${attendee.firstName || attendee.name}.pdf`
-      );
+      pdf.save(`DevFest-2025-Certificate-${attendee.name}.pdf`);
     } catch (error) {
       console.error("Failed to generate PDF", error);
     } finally {
@@ -193,9 +190,7 @@ export function CertificateDetailClient({
 
     const link = document.createElement("a");
     link.href = previewImageUrl;
-    link.download = `DevFest-2025-Certificate-${
-      attendee.firstName || attendee.name
-    }.png`;
+    link.download = `DevFest-2025-Certificate-${attendee.name}.png`;
     link.click();
   };
 
@@ -207,8 +202,7 @@ export function CertificateDetailClient({
             Certificate not found
           </h1>
           <p className="text-sm text-gray-600">
-            You may not have attended the workshop. If you believe this is a
-            mistake, contact{" "}
+            If you believe this is a mistake, contact{" "}
             <a
               className="font-semibold text-blue-600"
               href="mailto:work@ayushmakwana.com"

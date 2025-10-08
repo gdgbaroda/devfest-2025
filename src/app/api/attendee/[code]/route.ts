@@ -31,7 +31,7 @@ export async function GET(
     return NextResponse.json(
       {
         error:
-          "Certificate not found. You may not have attended the workshop. If you believe this is a mistake, contact work@ayushmakwana.com.",
+          "Certificate not found. You may not have attended the workshop. If you believe this is a mistake, contact work@ayushmakwana.com",
       },
       { status: 404 }
     );

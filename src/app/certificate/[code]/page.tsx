@@ -21,7 +21,6 @@ export default async function CertificatePage({
             Certificate not found
           </h1>
           <div className="mt-3 text-sm text-gray-600">
-            <p>You may not have attended the workshop.</p>
             <p>If you believe this is a mistake, contact at</p>
           </div>
           <a

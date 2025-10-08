@@ -1,5 +1,5 @@
 import type { AttendeeData } from "@/lib/attendees";
-
+import Image from "next/image";
 interface CertificatePreviewProps {
   attendee: AttendeeData;
   verificationUrl: string;
@@ -52,26 +52,28 @@ export function CertificatePreview({
               Certificate of Participation
             </span>
             <h1 className="text-4xl font-semibold text-blue-600">
-              DevFest 2025
+              DevFest Baroda 2025
             </h1>
             <div className="h-1 w-24 rounded-full bg-gradient-to-r from-blue-500 via-yellow-400 to-green-500" />
             <p className="max-w-[420px] text-sm text-slate-600">
-              Presented by Google Developer Groups Baroda in recognition of
-              dedicated involvement in the region&apos;s premier developer
-              conference.
+              Presented by Google Developer Groups Baroda for successfully
+              completing hands-on technical workshops during the region&apos;s
+              flagship developer festival.
             </p>
           </header>
 
           <main className="mt-12 flex flex-1 flex-col items-center justify-center gap-6 text-center">
             <p className="text-sm uppercase tracking-[0.35em] text-slate-500">
-              Awarded to
+              Proudly Presented To
             </p>
             <p className="max-w-[520px] text-5xl font-semibold text-slate-900">
               {attendee.name}
             </p>
             <p className="max-w-[520px] text-base leading-relaxed text-slate-600">
-              for actively participating in sessions, workshops, and community
-              programs that empower developers across Gujarat.
+              for actively participating in the hands-on AI and Cloud workshops
+              at DevFest Baroda 2025, demonstrating applied understanding of
+              fine-tuning, long-term memory design, and intelligent agent
+              workflows in modern AI development.
             </p>
           </main>
 
@@ -79,11 +81,9 @@ export function CertificatePreview({
             <div className="flex flex-col gap-4 text-sm text-slate-600">
               <div>
                 <p className="text-xs uppercase tracking-wide text-slate-400">
-                  Conference
+                  Date
                 </p>
-                <p className="font-medium text-slate-800">
-                  October 4–5, 2025 · Baroda, Gujarat
-                </p>
+                <p className="font-medium text-slate-800">October 4, 2025</p>
               </div>
               <div>
                 <p className="text-xs uppercase tracking-wide text-slate-400">
@@ -96,6 +96,15 @@ export function CertificatePreview({
             </div>
 
             <div className="flex flex-col items-center gap-3 text-center text-sm text-slate-500">
+              <div className="relative h-12 w-32">
+                <Image
+                  src="/team/sign/rahul_sign.svg"
+                  alt="Authorized Signatory"
+                  fill
+                  quality={100}
+                  className="object-contain"
+                />
+              </div>
               <div className="h-[1.5px] w-40 bg-gradient-to-r from-blue-500 to-green-500" />
               <p className="font-medium text-slate-700">Authorized Signatory</p>
             </div>
