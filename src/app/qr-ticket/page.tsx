@@ -10,7 +10,7 @@ export default function QRTicketPage() {
 
   useEffect(() => {
     // Generate QR code as data URL
-    QRCode.toDataURL("https://devfest.gdgbaroda.com/", {
+    QRCode.toDataURL("https://devfest2025.gdgbaroda.com/", {
       width: 320,
       margin: 2,
       color: {
@@ -52,7 +52,7 @@ export default function QRTicketPage() {
           body {
             margin: 0;
             padding: 0;
-            font-family: 'Google Sans', system-ui, sans-serif;
+            font-family: "Google Sans", system-ui, sans-serif;
           }
 
           .no-print {
@@ -94,27 +94,36 @@ export default function QRTicketPage() {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            font-family: 'Google Sans', system-ui, sans-serif;
+            font-family: "Google Sans", system-ui, sans-serif;
             box-sizing: border-box;
           }
         }
 
         /* Google Brand Colors */
-        .google-blue { color: #4285F4; }
-        .google-red { color: #EA4335; }
-        .google-yellow { color: #FBBC04; background: #FBBC04; }
-        .google-green { color: #34A853; }
+        .google-blue {
+          color: #4285f4;
+        }
+        .google-red {
+          color: #ea4335;
+        }
+        .google-yellow {
+          color: #fbbc04;
+          background: #fbbc04;
+        }
+        .google-green {
+          color: #34a853;
+        }
 
         .header-section {
           background: white;
           padding: 15px 20px;
           border-radius: 12px;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
           margin-bottom: 20px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-left: 4px solid #4285F4;
+          border-left: 4px solid #4285f4;
         }
 
         .title-text {
@@ -143,8 +152,8 @@ export default function QRTicketPage() {
           padding: 25px;
           border-radius: 12px;
           text-align: center;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-          border: 2px solid #4285F4;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          border: 2px solid #4285f4;
           width: 100%;
         }
 
@@ -152,7 +161,7 @@ export default function QRTicketPage() {
           display: inline-block;
           padding: 12px;
           background: white;
-          border: 2px solid #4285F4;
+          border: 2px solid #4285f4;
           border-radius: 12px;
           box-shadow: 0 2px 12px rgba(66, 133, 244, 0.15);
         }
@@ -166,13 +175,13 @@ export default function QRTicketPage() {
 
         .qr-url {
           font-size: 16px;
-          color: #4285F4;
+          color: #4285f4;
           font-weight: 600;
           margin: 8px 0;
         }
 
         .register-btn {
-          background: #34A853;
+          background: #34a853;
           color: white;
           padding: 10px 20px;
           border-radius: 8px;
@@ -190,7 +199,7 @@ export default function QRTicketPage() {
         }
 
         .date-card {
-          background: #4285F4;
+          background: #4285f4;
           color: white;
           padding: 18px;
           border-radius: 12px;
@@ -212,10 +221,10 @@ export default function QRTicketPage() {
 
         .venue-card {
           background: white;
-          border-left: 4px solid #34A853;
+          border-left: 4px solid #34a853;
           padding: 15px 18px;
           border-radius: 8px;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
         }
 
         .venue-label {
@@ -237,7 +246,7 @@ export default function QRTicketPage() {
           background: white;
           padding: 18px;
           border-radius: 12px;
-          border: 2px solid #34A853;
+          border: 2px solid #34a853;
           box-shadow: 0 4px 16px rgba(52, 168, 83, 0.12);
           grid-column: 1 / -1;
           width: 100%;
@@ -266,7 +275,7 @@ export default function QRTicketPage() {
         }
 
         .check-mark {
-          color: #34A853;
+          color: #34a853;
           margin-right: 6px;
           font-weight: bold;
           font-size: 14px;
@@ -276,11 +285,11 @@ export default function QRTicketPage() {
           background: white;
           padding: 12px 18px;
           border-radius: 12px;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-right: 4px solid #EA4335;
+          border-right: 4px solid #ea4335;
         }
 
         .organizer {
@@ -324,16 +333,41 @@ export default function QRTicketPage() {
           >
             {isGenerating ? (
               <>
-                <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                <svg
+                  className="w-5 h-5 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
                 </svg>
                 Preparing QR Code...
               </>
             ) : (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                  />
                 </svg>
                 Print A4 QR Page
               </>
@@ -399,7 +433,9 @@ export default function QRTicketPage() {
 
             {/* Highlights */}
             <div className="highlights">
-              <div className="highlights-title">What You&apos;ll Experience</div>
+              <div className="highlights-title">
+                What You&apos;ll Experience
+              </div>
               <div className="highlights-grid">
                 <div className="highlight-item">
                   <span className="check-mark">🚀</span>
@@ -434,7 +470,9 @@ export default function QRTicketPage() {
             />
             <div>
               <div className="organizer-text">Organized by</div>
-              <div className="organizer-name">Google Developer Groups Baroda</div>
+              <div className="organizer-name">
+                Google Developer Groups Baroda
+              </div>
             </div>
           </div>
           <div className="contact-info">

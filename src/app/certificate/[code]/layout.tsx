@@ -1,5 +1,5 @@
-import { Metadata } from 'next';
-import { ATTENDEES_DATA } from '@/lib/attendees';
+import { Metadata } from "next";
+import { getAttendeeByCode } from "@/lib/attendees";
 
 interface Props {
   params: Promise<{
@@ -10,40 +10,43 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { code } = await params;
 
-  // Find attendee data directly from embedded data (no HTTP fetch needed)
-  let attendeeName = 'Attendee';
-  try {
-    const attendee = ATTENDEES_DATA.find(a => a.qrCode === code);
-    if (attendee) {
-      attendeeName = attendee.name;
-    }
-  } catch (error) {
-    // Fallback to generic name if lookup fails
-    console.error('Failed to lookup attendee data for metadata:', error);
-  }
+  const attendee = getAttendeeByCode(code);
+  const attendeeName = attendee?.name || "Attendee";
+
+  const siteOrigin = "https://devfest2025.gdgbaroda.com";
+  const certificateUrl = `${siteOrigin}/certificate/${code}`;
+  const certificateTitle = `DevFest 2025 Certificate | ${attendeeName}`;
+  const certificateDescription =
+    "Verify the participation certificate awarded at DevFest 2025 by GDG Baroda.";
+  const shareImage = `${siteOrigin}/GroupPhoto1.jpg`;
 
   return {
-    title: `DevFest 2025 Certificate - ${attendeeName}`,
-    description: `Certificate of participation for DevFest 2025 - Gujarat's Premier Developer Conference`,
+    title: certificateTitle,
+    description: certificateDescription,
+    alternates: {
+      canonical: certificateUrl,
+    },
     openGraph: {
-      title: `DevFest 2025 Certificate`,
-      description: `Certificate of participation for DevFest 2025 - Gujarat's Premier Developer Conference`,
-      type: 'website',
-      url: `https://devfest.gdgbaroda.com/certificate/${code}`,
+      title: certificateTitle,
+      description: certificateDescription,
+      type: "article",
+      url: certificateUrl,
+      siteName: "DevFest 2025 | GDG Baroda",
+      locale: "en_US",
       images: [
         {
-          url: '/DF25-Logo-Lockup.svg',
+          url: shareImage,
           width: 1200,
-          height: 630,
-          alt: 'DevFest 2025 Certificate',
+          height: 627,
+          alt: "DevFest 2025 Certificate preview",
         },
       ],
     },
     twitter: {
-      card: 'summary_large_image',
-      title: `DevFest 2025 Certificate`,
-      description: `Certificate of participation for DevFest 2025 - Gujarat's Premier Developer Conference`,
-      images: ['/DF25-Logo-Lockup.svg'],
+      card: "summary_large_image",
+      title: certificateTitle,
+      description: certificateDescription,
+      images: [shareImage],
     },
   };
 }
